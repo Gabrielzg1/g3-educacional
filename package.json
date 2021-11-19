@@ -1,0 +1,23 @@
+{
+  "name": "g3-educacional",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gabrielzg1/g3-educacional.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gabrielzg1/g3-educacional/issues"
+  },
+  "homepage": "https://github.com/Gabrielzg1/g3-educacional#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

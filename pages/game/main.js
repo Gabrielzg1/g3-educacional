@@ -3,12 +3,14 @@ var ctx = canvas.getContext("2d");
 var WIDTH = 1890
 var HEIGHT = 930
 
-var player = {
-    x: 945,
-    y: 465,
-    color: 'blue'
 
+var player = {
+    lado: 100,
+    color: "blue",
+    x: 100,
+    y: 100,
 }
+
 var dy, dx
 var keycode
 
@@ -60,9 +62,6 @@ document.addEventListener('keyup', function (e) {
 
 });
 function Desenhar() {
-    ctx.fillRect(player.x, player.y, 100, 100)
-    ctx.fillStyle = player.color
-    console.log(dx)
 
     if (dx == -1)
         player.x -= velocidade
@@ -74,21 +73,21 @@ function Desenhar() {
         player.y -= velocidade
 
 
-    if (x == 1890 + 100) {
+    if (player.x > 1890 - player.lado) {
+        player.x = 1890 - player.lado
+    }
+    if (player.y > 930 - player.lado)
+        player.y = 930 - player.lado
+
+    if (player.x < 0)
         player.x = 0
-    }
-    if (y == 1030) {
+
+    if (player.y < 0)
         player.y = 0
-    }
-    if (x == -100) {
-        player.x = 1790
-    }
-    if (y == -100) {
-        player.y = 830
-    }
 
 
-
+    ctx.fillRect(player.x, player.y, player.lado, player.lado)
+    ctx.fillStyle = player.color
 
 }
 function Atualizar() {

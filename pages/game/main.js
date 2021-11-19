@@ -9,12 +9,13 @@ var player = {
     color: "blue",
     x: 100,
     y: 100,
+    velocidade: 10,
 }
 
 var dy, dx
 var keycode
 
-var velocidade = 10
+
 
 function limpa_tela() {
     ctx.clearRect(0, 0, WIDTH, HEIGHT);
@@ -64,13 +65,13 @@ document.addEventListener('keyup', function (e) {
 function Desenhar() {
 
     if (dx == -1)
-        player.x -= velocidade
+        player.x -= player.velocidade
     if (dx == 1)
-        player.x += velocidade
+        player.x += player.velocidade
     if (dy == 1)
-        player.y += velocidade
+        player.y += player.velocidade
     if (dy == -1)
-        player.y -= velocidade
+        player.y -= player.velocidade
 
 
     if (player.x > 1890 - player.lado) {

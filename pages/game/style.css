@@ -1,0 +1,8 @@
+body{
+    background-image: linear-gradient(180deg, red, yellow);
+}
+canvas{
+    border:5px solid red;
+    background-color: black;
+    z-index: 0;
+}

@@ -9,12 +9,11 @@ var player = {
     x: 100,
     y: 750,
     velocidade: 10,
+
 }
 
 var dy, dx
 var keycode
-
-
 
 function limpa_tela() {
     ctx.clearRect(0, 0, WIDTH, HEIGHT);
@@ -28,6 +27,7 @@ document.addEventListener('keydown', function (e) {
     if (e.keyCode == 37) {
         dx = -1;
     }
+
     //right
     else if (e.keyCode == 39) {
 
@@ -43,6 +43,7 @@ document.addEventListener('keyup', function (e) {
             dx = 0;
             break;
 
+
     }
 
 
@@ -55,12 +56,15 @@ function Desenhar() {
         player.x += player.velocidade
 
 
+
     if (player.x > WIDTH - player.lado) {
         player.x = WIDTH - player.lado
     }
 
+
     if (player.x < 0)
         player.x = 0
+
 
 
     ctx.fillRect(player.x, player.y, player.lado, player.lado)

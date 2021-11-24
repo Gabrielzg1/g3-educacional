@@ -71,6 +71,8 @@ function Desenhar() {
     ctx.fillStyle = player.color
 
 }
+
+
 function Atualizar() {
     limpa_tela()
     Desenhar()

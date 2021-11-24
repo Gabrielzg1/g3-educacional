@@ -6,3 +6,9 @@ canvas{
     background-color: black;
     z-index: 0;
 }
+
+.Home-body{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px 100px; 
+  }

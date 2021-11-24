@@ -1,7 +1,8 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
-var WIDTH = 1890
-var HEIGHT = 930
+var WIDTH = 1890;
+var HEIGHT = 930;
+var LimitWidth = WIDTH/2;
 
 var player = {
     lado: 100,
@@ -12,8 +13,8 @@ var player = {
 
 }
 
-var dy, dx
-var keycode
+var dx;
+var keycode;
 
 function limpa_tela() {
     ctx.clearRect(0, 0, WIDTH, HEIGHT);
@@ -51,24 +52,24 @@ document.addEventListener('keyup', function (e) {
 function Desenhar() {
 
     if (dx == -1)
-        player.x -= player.velocidade
+        player.x -= player.velocidade;
     if (dx == 1)
-        player.x += player.velocidade
+        player.x += player.velocidade;
 
 
 
     if (player.x > WIDTH - player.lado) {
-        player.x = WIDTH - player.lado
+        player.x = WIDTH - player.lado;
     }
 
 
     if (player.x < 0)
-        player.x = 0
+        player.x = 0;
 
 
 
-    ctx.fillRect(player.x, player.y, player.lado, player.lado)
-    ctx.fillStyle = player.color
+    ctx.fillRect(player.x, player.y, player.lado, player.lado);
+    ctx.fillStyle = player.color;
 
 }
 function GameOver(){

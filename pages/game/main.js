@@ -71,12 +71,23 @@ function Desenhar() {
     ctx.fillStyle = player.color
 
 }
-
-
+function GameOver(){
+    var alternativa = true;
+    if(alternativa){
+        if(player.x > LimitWidth)
+            //alert("Game Over");
+            console.log("GameOver");
+    }
+    else{
+        if(player.x < LimitWidth)
+            //alert("Game Over");
+            console.log("GameOver");
+    }        
+}
 function Atualizar() {
-    limpa_tela()
-    Desenhar()
-
+    limpa_tela();
+    Desenhar();
+    GameOver();
 }
 setInterval(Atualizar, 1);
 

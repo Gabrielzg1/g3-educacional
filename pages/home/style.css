@@ -3,9 +3,18 @@
     color: steelblue;
      text-align: center;
      size: 100px;
+     text-shadow: skyblue;
  }
+.imagem{
+    margin-left: 0px;
+    margin-right: auto;
+    width: 40%;
+    height: 15%;
+   
+}
  body{
-   background-color: silver;
+     background-color: silver;
+     background-image: url(bmath.png);
  }
  .myButton {
      box-shadow:inset -1px 0px 0px 0px #dcecfb;

@@ -55,8 +55,8 @@ function Desenhar() {
         player.x += player.velocidade
 
 
-    if (player.x > 1890 - player.lado) {
-        player.x = 1890 - player.lado
+    if (player.x > WIDTH - player.lado) {
+        player.x = WIDTH - player.lado
     }
 
     if (player.x < 0)

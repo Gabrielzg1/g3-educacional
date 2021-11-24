@@ -8,9 +8,18 @@ app.use(express.static("pages"));
 app.get('/home', function (req, res) {
 
 });
+
+//configurando server da página de login
 app.get('/login', function (req, res) {
+    var nome = req.query.nome;
 
 });
+app.get('/getNome', function (req, res) {
+    res.send(Nome);
+});
+
+
+//configuração do jogo
 app.get('/game', function (req, res) {
 
 

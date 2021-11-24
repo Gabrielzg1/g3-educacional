@@ -17,5 +17,5 @@ app.get('/game', function (req, res) {
 });
 
 app.listen(port, function () {
-    console.log(`rodando em  http://${host}:${port}`);
+    console.log(`Rodando em: http://${host}:${port}`);
 });

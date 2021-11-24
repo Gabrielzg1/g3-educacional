@@ -2,7 +2,7 @@ var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 var WIDTH = 1890;
 var HEIGHT = 930;
-var LimitWidth = WIDTH/2;
+var LimitWidth = WIDTH / 2;
 
 var player = {
     lado: 100,
@@ -72,18 +72,19 @@ function Desenhar() {
     ctx.fillStyle = player.color;
 
 }
-function GameOver(){
+function GameOver() {
+
     var alternativa = true;
-    if(alternativa){
-        if(player.x > LimitWidth)
+    if (alternativa) {
+        if (player.x > LimitWidth)
             //alert("Game Over");
             console.log("GameOver");
     }
-    else{
-        if(player.x < LimitWidth)
+    else {
+        if (player.x < LimitWidth)
             //alert("Game Over");
             console.log("GameOver");
-    }        
+    }
 }
 function Atualizar() {
     limpa_tela();

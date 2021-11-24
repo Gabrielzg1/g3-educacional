@@ -10,6 +10,15 @@ function aleatorio() {
     }
     return num
 }
+function camAleatorio() {
+    var porta = Math.random() * 3
+
+    porta = Math.floor(porta);
+    if (porta <= 0) {
+        porta = 1;
+    }
+    console.log(porta)
+}
 
 // Regra do tombo
 // Integral simples(ex: integral x^n = (x^n+1)/n+1)

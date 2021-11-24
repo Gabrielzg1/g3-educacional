@@ -5,12 +5,15 @@ const host = 'localhost'
 
 app.use(express.static("pages"));
 
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + "/pages/home/index.html");
+app.get('/home', function (req, res) {
+
+});
+app.get('/login', function (req, res) {
+
 });
 app.get('/game', function (req, res) {
 
-    //res.sendFile(__dirname + "/pages/game/index.html");
+
 });
 
 app.listen(port, function () {

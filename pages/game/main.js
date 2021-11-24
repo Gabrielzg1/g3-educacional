@@ -3,7 +3,6 @@ var ctx = canvas.getContext("2d");
 var WIDTH = 1890
 var HEIGHT = 930
 
-
 var player = {
     lado: 100,
     color: "blue",
@@ -96,8 +95,6 @@ function Atualizar() {
     Desenhar()
 
 }
-
-
 setInterval(Atualizar, 1);
 
 

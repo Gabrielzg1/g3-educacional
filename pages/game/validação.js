@@ -10,26 +10,25 @@ function aleatorio() {
     }
     return num
 }
-function camAleatorio() {
-    var certo = Math.random() * 3
-    var errado;
 
-    certo = Math.floor(certo);
-    if (certo <= 0) {
-        certo = 1;
-    }
-    if (certo == 1){
-        errado = 2
-    }
-    if (certo == 2){
-        errado = 1
-    }
 
-    console.log(certo);
-    console.log(errado)
-    return certo
-    return errado
+function caminho(){
+    var caminho1;
+    let i = Math.floor(Math.random() * 2)
+    if (i == 2){
+        i = 1
+    }
+    var caminho0 = [true, false]
+    if(caminho0[i] == true){
+        caminho1 = false
+    } else
+        caminho1 = true
+    console.log(caminho0[i])
+    console.log(caminho1)
     
+    
+
+
 }
 
 // !!!! certo 1 = ESQUERDO // certo 2 = DIREITO!!! // 

@@ -14,7 +14,7 @@
 }
  body{
      background-color: silver;
-     background-image: url(bmath.png);
+     background-image: url(./img/bmath.png);
  }
  .myButton {
      box-shadow:inset -1px 0px 0px 0px #dcecfb;

@@ -24,20 +24,20 @@
         function login() {
             var nome = document.getElementById("nome").value
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("GET", "/login?nome=" + nome, false);
-            xmlhttp.send();
+            //xmlhttp.open("GET", "/login?nome=" + nome, false);
+           // xmlhttp.send();
             console.log(nome)
         }
 
-        function Update() {
+        /*function Update() {
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.open("GET", "/getNome", false);
             xmlhttp.send();
 
             document.getElementById("output").value = xmlhttp.responseText;
-        }
+        }*/
 
-        setInterval(Update, 1000);
+        //setInterval(Update, 1000);
     </script>
 
 </body>

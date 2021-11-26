@@ -11,15 +11,28 @@ function aleatorio() {
     return num
 }
 function camAleatorio() {
-    var porta = Math.random() * 3
+    var certo = Math.random() * 3
+    var errado;
 
-    porta = Math.floor(porta);
-    if (porta <= 0) {
-        porta = 1;
+    certo = Math.floor(certo);
+    if (certo <= 0) {
+        certo = 1;
     }
-    console.log(porta)
+    if (certo == 1){
+        errado = 2
+    }
+    if (certo == 2){
+        errado = 1
+    }
+
+    console.log(certo);
+    console.log(errado)
+    return certo
+    return errado
+    
 }
 
+// !!!! certo 1 = ESQUERDO // certo 2 = DIREITO!!! // 
 // Regra do tombo
 // Integral simples(ex: integral x^n = (x^n+1)/n+1)
 // Derivadas (teoremas, ex: f(x) = cosx -> f'(x) = -senx)

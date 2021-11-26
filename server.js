@@ -11,11 +11,11 @@ app.get('/home', function (req, res) {
 
 //configurando server da página de login
 app.get('/login', function (req, res) {
-    var nome = req.query.nome;
+    //var nome = req.query.nome;
 
 });
 app.get('/getNome', function (req, res) {
-    res.send(Nome);
+    //res.send(nome);
 });
 
 

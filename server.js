@@ -11,7 +11,9 @@ app.get('/home', function (req, res) {
 
 //configurando server da página de login
 app.get('/login', function (req, res) {
-    //var nome = req.query.nome;
+    if(req.query.nome){
+        res.send(alert('logado com sucesso, clique em ok para jogar, ' + req.query.nome))
+    }
 
 });
 app.get('/getNome', function (req, res) {

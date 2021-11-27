@@ -47,6 +47,9 @@ app.get('/game', function (req, res) {
 
 
 });
+app.get('/logout', function (req, res) {
+
+});
 
 app.listen(port, function () {
     console.log(`Rodando em: http://${host}:${port}`);

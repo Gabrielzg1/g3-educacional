@@ -25,17 +25,15 @@ app.use(session({
 
 //configurando server da página de login
 app.post('/login', function (req, res) {
-    if (req.session.userid || req.body.passwd == "123456") {
+    if (req.session.userid) {
         req.session.userid = req.body.userid;
-        CarregarEmails(req, res);
-    } else {
-        res.send("Senha Inválida");
+
     }
 });
 
-app.get('/login', function (req, res) {
+app.get('/logged', function (req, res) {
     if (req.session.userid) {
-        CarregarEmails(req, res);
+        res.send("conectou")
     } else {
         res.send("Usuário não está logado!");
     }
@@ -48,7 +46,9 @@ app.get('/game', function (req, res) {
 
 });
 app.get('/logout', function (req, res) {
-
+    req.session.destroy(function () {
+        res.send("Sessão finalizada!");
+    });
 });
 
 app.listen(port, function () {

@@ -12,26 +12,26 @@ function aleatorio() {
 }
 
 
-function caminho(){
+function caminho() {
     var caminho1;
     let i = Math.floor(Math.random() * 2)
-    if (i == 2){
+    if (i == 2) {
         i = 1
     }
     var caminho0 = [true, false]
-    if(caminho0[i] == true){
+    if (caminho0[i] == true) {
         caminho1 = false
     } else
         caminho1 = true
     console.log(caminho0[i])
     console.log(caminho1)
-    
-    
+
+
 
 
 }
 
-// !!!! certo 1 = ESQUERDO // certo 2 = DIREITO!!! // 
+// !!!! certo 0 = ESQUERDO // certo 1 = DIREITO!!! // 
 // Regra do tombo
 // Integral simples(ex: integral x^n = (x^n+1)/n+1)
 // Derivadas (teoremas, ex: f(x) = cosx -> f'(x) = -senx)

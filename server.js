@@ -39,7 +39,6 @@ app.get('/logged', function (req, res) {
     }
 });
 
-
 //configuração do jogo
 app.get('/game', function (req, res) {
 

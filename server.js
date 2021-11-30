@@ -52,5 +52,5 @@ app.get('/logout', function (req, res) {
 });
 
 app.listen(port, function () {
-    console.log(`Rodando em: http://${host}:${port}`);
+    console.log(`Rodando em: http://${host}:${port}/home`);
 });

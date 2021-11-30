@@ -1,4 +1,3 @@
-
 //Geração de numeros aletorios de 1 a 10 para realização das randomicas opicoes
 
 function aleatorio() {
@@ -31,7 +30,9 @@ function caminho() {
 
 }
 
-// !!!! certo 0 = ESQUERDO // certo 1 = DIREITO!!! // 
-// Regra do tombo
-// Integral simples(ex: integral x^n = (x^n+1)/n+1)
-// Derivadas (teoremas, ex: f(x) = cosx -> f'(x) = -senx)
+    // !!!! certo 0 = ESQUERDO // certo 1 = DIREITO!!! // 
+    // Regra do tombo
+    // Integral simples(ex: integral x^n = (x^n+1)/n+1)
+    // Derivadas (teoremas, ex: f(x) = cosx -> f'(x) = -senx)
+
+

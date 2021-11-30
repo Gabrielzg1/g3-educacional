@@ -25,9 +25,6 @@ function caminho() {
     console.log(caminho0[i])
     console.log(caminho1)
 
-
-
-
 }
 
     // !!!! certo 0 = ESQUERDO // certo 1 = DIREITO!!! // 

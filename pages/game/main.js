@@ -1,8 +1,8 @@
 
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
-var WIDTH = 1890;
-var HEIGHT = 930;
+var WIDTH = 900;
+var HEIGHT = 950;
 var LimitWidth = WIDTH / 2;
 
 var player = {

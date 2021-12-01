@@ -54,23 +54,6 @@ document.addEventListener('keyup', function (e) {
 });
 function Desenhar() {
 
-    /*if (dx == -1)
-        player.x -= player.velocidade;
-    if (dx == 1)
-        player.x += player.velocidade;
-
-
-
-    if (player.x > WIDTH - player.lado) {
-        player.x = WIDTH - player.lado;
-    }
-
-
-    if (player.x < 0)
-        player.x = 0;
-
-    */
-
     ctx.fillRect(player.x, player.y, player.lado, player.lado);
     ctx.fillStyle = player.color;
 

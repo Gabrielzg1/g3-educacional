@@ -5,13 +5,7 @@
      size: 100px;
      text-shadow: skyblue;
  }
-.imagem{
-    margin-left: 0px;
-    margin-right: auto;
-    width: 40%;
-    height: 15%;
-   
-}
+
  body{
      background-color: silver;
      background-image: url(./img/bmath.png);

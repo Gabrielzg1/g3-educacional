@@ -1,0 +1,19 @@
+body{
+    background-color: silver;
+    background-image: url(backmath.png);
+}
+.navbar{
+    color: steelblue;
+    text-align: center;
+    size: 100px;
+    text-shadow: skyblue;
+}
+.form{
+    color:darkblue;
+    size: 40px;
+    text-align: center;
+}
+.imagem{
+    text-align: center;
+   
+}

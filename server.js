@@ -5,16 +5,11 @@ var app = express();
 const port = 3000
 const host = 'localhost'
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+/*app.use(express.urlencoded({ extended: false }));
+app.use(express.json());*/
 app.use(express.static("pages"));
 
-
-app.get('/home', function (req, res) {
-
-});
-
-app.use(session({
+/*app.use(session({
     secret: "asfdasdfasfsadfasdfasdfadfs",
     secure: false,
     resave: false,
@@ -22,7 +17,7 @@ app.use(session({
         maxAge: 0.5 * 60 * 60 * 24 * 365
     },
     saveUninitialized: false
-}));
+}));*/
 
 //configurando server da página de login
 app.get('/login', function (req, res) {
@@ -36,7 +31,9 @@ app.get('/login', function (req, res) {
     }*/
 });
 
+app.get('/home', function (req, res) {
 
+});
 //configuração do jogo
 app.get('/game', function (req, res) {
 

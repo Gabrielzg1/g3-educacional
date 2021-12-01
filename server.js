@@ -2,7 +2,7 @@ const express = require('express');
 const session = require('express-session')
 var app = express();
 
-const port = 3000
+const port = 3030
 const host = 'localhost'
 
 /*app.use(express.urlencoded({ extended: false }));

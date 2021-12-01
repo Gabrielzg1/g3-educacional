@@ -24,11 +24,24 @@ app.use(session({
 //configurando server da página de login
 app.get('/login', function (req, res) {
     res.sendFile(path.join(__dirname, './login/index.html'));
-    if (req.session.userid) {
+   /* while(req.session.userid == undefined){
+        if(req.query.userid != undefined){
+            req.session.userid = req.query.userid
+
+        }
+
+    } 
+   
+    /* if (req.session.userid) {
+        req.session.userid = req.query.userid
+        console.log('If: ' + req.query.userid)
         res.redirect('/game')
     }else{
+        req.session.userid = req.query.userid
+        console.log(req.session.userid)
         
-    }
+    }*/
+
 
 });
 
@@ -38,21 +51,17 @@ app.get('/', function (req, res) {
 //configuração do jogo
 app.get('/game', function (req, res) {
     res.sendFile(path.join(__dirname, './game/index.html'));
-    var teste = "entrou"
-    if (req.session.userid) {
-        console.log(teste)
+     /*  if (req.session.userid) {
         res.sendFile(__dirname, './game/index.html')
 
     } else {
         if (req.query.userid) {
             req.session.userid = req.query.userid
-            console.log(teste + '1')
             res.sendFile(__dirname, './game/index.html')
         } else {
-            console.log(teste + '2');
-            //res.redirect('/login')
+           // res.redirect('/login')
         }
-    }
+    }*/
 
 });
 app.get('/logout', function (req, res) {

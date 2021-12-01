@@ -26,6 +26,8 @@ app.get('/login', function (req, res) {
     res.sendFile(path.join(__dirname, './login/index.html'));
     if (req.session.userid) {
         res.redirect('/game')
+    }else{
+        
     }
 
 });
@@ -48,7 +50,7 @@ app.get('/game', function (req, res) {
             res.sendFile(__dirname, './game/index.html')
         } else {
             console.log(teste + '2');
-            res.redirect('/login')
+            //res.redirect('/login')
         }
     }
 

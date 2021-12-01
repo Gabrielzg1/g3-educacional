@@ -1,6 +1,6 @@
 body{
     display: block;
-   background-color: white;
+   background-color:silver;
 }
 canvas{
     border:5px solid rgb(30, 255, 0);
@@ -13,3 +13,9 @@ canvas{
     grid-template-columns: auto auto auto;
     padding: 10px 10px; 
   }
+
+h1{
+    color:darkblue;
+    
+    
+}

@@ -9,7 +9,7 @@ const host = 'localhost'
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("pages"));
-app.set('view engine', 'ejs');
+
 
 app.get('/home', function (req, res) {
 

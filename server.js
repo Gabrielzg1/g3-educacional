@@ -32,7 +32,7 @@ app.get('/login', function (req, res) {
     } else {
         username = req.query.userid
         console.log(username)
-        res.redirect('/game');
+
     }
 });
 

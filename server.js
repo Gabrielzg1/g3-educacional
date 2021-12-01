@@ -40,7 +40,7 @@ app.get('/login', function (req, res) {
 
 //configuração do jogo
 app.get('/game', function (req, res) {
-    res.render('/pages/game');
+
 
 });
 app.get('/logout', function (req, res) {

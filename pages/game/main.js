@@ -1,19 +1,19 @@
+
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 var WIDTH = 900;
 var HEIGHT = 950;
 var LimitWidth = WIDTH / 2;
+var esquerda = true, direita = false;
 
 var player = {
     lado: 100,
     color: "blue",
-    x: 100,
+    x: 225,
     y: 750,
     velocidade: 10,
 
 }
-
-var dx;
 var keycode;
 
 function limpa_tela() {
@@ -26,13 +26,16 @@ document.addEventListener('keydown', function (e) {
 
     //left
     if (e.keyCode == 37) {
-        dx = -1;
+        player.x = 225;
+        esquerda = true;
+        direita = false;
     }
 
     //right
     else if (e.keyCode == 39) {
-
-        dx = 1;
+        player.x = 575;
+        esquerda = false;
+        direita = true;
     }
 
 });
@@ -51,7 +54,7 @@ document.addEventListener('keyup', function (e) {
 });
 function Desenhar() {
 
-    if (dx == -1)
+    /*if (dx == -1)
         player.x -= player.velocidade;
     if (dx == 1)
         player.x += player.velocidade;
@@ -66,7 +69,7 @@ function Desenhar() {
     if (player.x < 0)
         player.x = 0;
 
-
+    */
 
     ctx.fillRect(player.x, player.y, player.lado, player.lado);
     ctx.fillStyle = player.color;

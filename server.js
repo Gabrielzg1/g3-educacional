@@ -26,14 +26,14 @@ app.use(session({
 
 //configurando server da página de login
 app.get('/login', function (req, res) {
-    var username = false
+    /*var username = false
     if (req.session.userid) {
         req.session.userid = req.query.userid;
     } else {
         username = req.query.userid
         console.log(username)
 
-    }
+    }*/
 });
 
 

@@ -62,12 +62,12 @@ function GameOver() {
 
     var alternativa = true;
     if (alternativa) {
-        if (player.x > LimitWidth)
+        if (esquerda)
             //alert("Game Over");
             console.log("GameOver");
     }
     else {
-        if (player.x < LimitWidth)
+        if (direita)
             //alert("Game Over");
             console.log("GameOver");
     }

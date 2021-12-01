@@ -14,13 +14,22 @@
         <h1>Página de login</h1>
         <a href="/home">home</a>
     </div>
-    <form action="http://localhost:3000/logged" method="post">
+    <form action="http://localhost:3000/login" method="get">
         Username<input type="text" name="userid">
         <input type="submit">
     </form>
 
     <script type="text/javascript" charset="utf-8">
-
+        /* function update() {
+             xmlhttp = new XMLHttpRequest();
+             xmlhttp.open("GET", "/gethora", false);
+             xmlhttp.onreadystatechange = function () {
+                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                     document.getElementById("output").value = xmlhttp.responseText;
+             }
+             xmlhttp.send();
+         }
+         setInterval(update, 1000);*/
 
     </script>
 

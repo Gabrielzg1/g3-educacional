@@ -1,5 +1,6 @@
 const express = require('express');
 const session = require('express-session')
+const path = require('path');
 var app = express();
 
 const port = 3000
@@ -8,6 +9,7 @@ const host = 'localhost'
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("pages"));
+app.set('view engine', 'ejs');
 
 app.get('/home', function (req, res) {
 
@@ -24,24 +26,21 @@ app.use(session({
 }));
 
 //configurando server da página de login
-app.post('/login', function (req, res) {
+app.get('/login', function (req, res) {
+    var username = false
     if (req.session.userid) {
-        req.session.userid = req.body.userid;
-
-    }
-});
-
-app.get('/logged', function (req, res) {
-    if (req.session.userid) {
-        res.send("conectou")
+        req.session.userid = req.query.userid;
     } else {
-        res.send("Usuário não está logado!");
+        username = req.query.userid
+        console.log(username)
+        res.redirect('/game');
     }
 });
+
 
 //configuração do jogo
 app.get('/game', function (req, res) {
-
+    res.render('/pages/game');
 
 });
 app.get('/logout', function (req, res) {
@@ -53,3 +52,4 @@ app.get('/logout', function (req, res) {
 app.listen(port, function () {
     console.log(`Rodando em: http://${host}:${port}/home`);
 });
+

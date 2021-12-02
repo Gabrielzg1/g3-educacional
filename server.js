@@ -9,6 +9,7 @@ const host = 'localhost'
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("www"));
+app.set('view engine', 'ejs')
 
 
 app.use(session({
@@ -23,8 +24,7 @@ app.use(session({
 
 //configurando server da página de login
 app.get('/login', function (req, res) {
-    res.sendFile(path.join(__dirname, './login/index.html'));
-
+    res.sendFile(path.join(__dirname, './views/login/index.html'));
     if (req.session.userid || req.query.userid) {
         console.log(req.query.userid)
         req.session.userid = req.query.userid
@@ -36,23 +36,20 @@ app.get('/login', function (req, res) {
 
 
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, './home/index.html'));
+    res.sendFile(path.join(__dirname, './views/home/index.html'));
 });
 //configuração do jogo
 app.get('/game', function (req, res) {
-    res.sendFile(path.join(__dirname, './game/index.html')); // linha em local TEMPORÁRIO PARA FUNCIONAMENTO
-    if (req.session.userid) {
-        res.sendFile(path.join(__dirname, './game/index.html'));
+    res.render('./game/index')// linha em local TEMPORÁRIO PARA FUNCIONAMENTO 
+    if (req.query.userid || req.query.userid != undefined || req.session.userid) {
+        req.session.userid = req.query.userid
+        res.render('./game/index', { username: req.query.userid })
+        console.log("teste1")
 
     } else {
-        if (req.query.userid || req.query.userid != undefined) {
-            req.session.userid = req.query.userid
-            res.sendFile(path.join(__dirname, './game/index.html'));
-
-        } else {
-            // res.redirect('/login') //COMANDO DESATIVADO PARA DESENVOLVIMENTO
-        }
+        //res.redirect('/login') //COMANDO DESATIVADO PARA DESENVOLVIMENTO
     }
+
 
 });
 app.get('/logout', function (req, res) {

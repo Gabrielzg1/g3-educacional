@@ -40,14 +40,16 @@ app.get('/', function (req, res) {
 });
 //configuração do jogo
 app.get('/game', function (req, res) {
-    res.render('./game/index')// linha em local TEMPORÁRIO PARA FUNCIONAMENTO 
-    if (req.query.userid || req.query.userid != undefined || req.session.userid) {
+    var username = "Nome do usuário" // linha de codigo para desenvolvimento (TEMPO)
+    res.render('./game/index', { username: username })     // linha em local TEMPORÁRIO PARA FUNCIONAMENTO
+    if (req.query.userid && req.query.userid != undefined && req.session.userid) {
+        var username = req.query.userid
         req.session.userid = req.query.userid
-        res.render('./game/index', { username: req.query.userid })
-        console.log("teste1")
+
+        console.log(username)
 
     } else {
-        //res.redirect('/login') //COMANDO DESATIVADO PARA DESENVOLVIMENTO
+        // res.redirect('/login') //COMANDO DESATIVADO PARA DESENVOLVIMENTO
     }
 
 

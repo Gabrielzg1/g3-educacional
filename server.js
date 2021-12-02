@@ -40,10 +40,9 @@ app.get('/', function (req, res) {
 });
 //configuração do jogo
 app.get('/game', function (req, res) {
-    res.sendFile(path.join(__dirname, './game/index.html'));
+    res.sendFile(path.join(__dirname, './game/index.html')); // linha em local TEMPORÁRIO PARA FUNCIONAMENTO
     if (req.session.userid) {
         res.sendFile(path.join(__dirname, './game/index.html'));
-
 
     } else {
         if (req.query.userid || req.query.userid != undefined) {
@@ -51,7 +50,7 @@ app.get('/game', function (req, res) {
             res.sendFile(path.join(__dirname, './game/index.html'));
 
         } else {
-            // res.redirect('/login') //COMANDO DESATIVADO PARA
+            // res.redirect('/login') //COMANDO DESATIVADO PARA DESENVOLVIMENTO
         }
     }
 

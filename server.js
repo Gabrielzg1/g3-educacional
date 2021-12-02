@@ -24,24 +24,12 @@ app.use(session({
 //configurando server da página de login
 app.get('/login', function (req, res) {
     res.sendFile(path.join(__dirname, './login/index.html'));
-    /*while (req.session.userid == undefined) {
-        if (req.query.userid != undefined) {
-            req.session.userid = req.query.userid
 
-        }
-
-    }*/
-
-    if (req.session.userid) {
+    if (req.session.userid || req.query.userid) {
+        console.log(req.query.userid)
         req.session.userid = req.query.userid
-        console.log('If: ' + req.query.userid)
         res.redirect('/game')
-    } else {
-        req.session.userid = req.query.userid
-        console.log(req.session.userid)
-
     }
-
 
 });
 
@@ -50,8 +38,7 @@ app.get('/', function (req, res) {
 });
 //configuração do jogo
 app.get('/game', function (req, res) {
-
-
+    res.sendFile(path.join(__dirname, './game/index.html'));
     if (req.session.userid) {
         res.sendFile(path.join(__dirname, './game/index.html'));
 
@@ -60,7 +47,7 @@ app.get('/game', function (req, res) {
             req.session.userid = req.query.userid
             res.sendFile(path.join(__dirname, './game/index.html'));
         } else {
-            // res.redirect('/login')
+            res.redirect('/login') //COMANDO DESATIVADO PARA
         }
     }
 

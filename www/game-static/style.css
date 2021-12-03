@@ -15,11 +15,15 @@ canvas{
   }
 
 .nav-timer{
-    width: 100%;
     display: grid;
-    grid-template-columns: 500px 50px 50px;
+    grid-template-columns: 900px 50px;
+    background-color: rgb(221, 221, 221);
 }
 .nav-timer, a{
     text-decoration: none;
+    padding-left: 10px;
 
+}
+.nav-timer, #cron{
+    font-size: 30px;
 }

@@ -26,12 +26,15 @@ app.use(session({
 app.get('/login', function (req, res) {
     res.sendFile(path.join(__dirname, './views/login/index.html'));
     if (req.session.userid || req.query.userid) {
-        console.log(req.query.userid)
         req.session.userid = req.query.userid
         if (req.query.userid != undefined)
             res.redirect(`/game?userid=${req.query.userid}`)
     }
 
+});
+app.get('/sobre', function (req, res) {
+    res.sendFile(path.join(__dirname, './views/sobre/index.html'));
+    
 });
 
 
@@ -40,30 +43,19 @@ app.get('/', function (req, res) {
 });
 //configuração do jogo
 app.get('/game', function (req, res) {
-    var username = "Nome do usuário" // linha de codigo para desenvolvimento (TEMPO)
-    res.render('./game/index', { username: username })     // linha em local TEMPORÁRIO PARA FUNCIONAMENTO
+    var username = "Nome do usuário" // linha de código para desenvolvimento ( Temporário )
+    res.render('./game/index', { username: username })     // linha de código para desenvolvimento ( Temporário )
     if (req.query.userid && req.query.userid != undefined && req.session.userid) {
         var username = req.query.userid
         req.session.userid = req.query.userid
-        //res.render('./game/index', { username: username })
-        console.log(username)
+        //res.render('./game/index', { username: username }) //COMANDO DESATIVADO PARA DESENVOLVIMENTO ( definitiva )
 
     } else {
-        // res.redirect('/login') //COMANDO DESATIVADO PARA DESENVOLVIMENTO
+        //res.redirect('/login') //COMANDO DESATIVADO PARA DESENVOLVIMENTO ( definitiva )
     }
 
 
 });
-app.get('/logout', function (req, res) {
-    req.session.destroy(function () {
-        res.send("Sessão finalizada!");
-    });
-});
-
-
-//variaveis de integração
-
-
 
 
 app.listen(port, function () {

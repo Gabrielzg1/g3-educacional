@@ -16,7 +16,7 @@ canvas{
 
 .nav-timer{
     display: grid;
-    grid-template-columns: 900px 50px;
+    grid-template-columns: 1000px 50px;
     background-color: rgb(221, 221, 221);
 }
  a{

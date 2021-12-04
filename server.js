@@ -34,7 +34,7 @@ app.get('/login', function (req, res) {
 });
 app.get('/sobre', function (req, res) {
     res.sendFile(path.join(__dirname, './views/sobre/index.html'));
-    
+
 });
 
 
@@ -48,10 +48,10 @@ app.get('/game', function (req, res) {
     if (req.query.userid && req.query.userid != undefined && req.session.userid) {
         var username = req.query.userid
         req.session.userid = req.query.userid
-        //res.render('./game/index', { username: username }) //COMANDO DESATIVADO PARA DESENVOLVIMENTO ( definitiva )
+        // res.render('./game/index', { username: username }) //COMANDO DESATIVADO PARA DESENVOLVIMENTO ( definitiva )
 
     } else {
-        //res.redirect('/login') //COMANDO DESATIVADO PARA DESENVOLVIMENTO ( definitiva )
+        //  res.redirect('/login') //COMANDO DESATIVADO PARA DESENVOLVIMENTO ( definitiva )
     }
 
 

@@ -1,0 +1,31 @@
+ body{
+     background-color: rgb(0, 0, 0);
+     background-image: url(./img/bmath.png);
+ }
+ .nav, a{
+ color: #fff;
+ text-decoration: none;
+ font-size: 30px;
+ font-weight: 900;
+ margin-left: 30px;
+ }
+ .titulo{
+    position: relative;
+    margin-top: 400px;
+    line-height: 4rem;
+    top: calc(50% - 2rem);
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    font-size: 5rem;
+    font-weight: 600;
+}
+.imagem{
+    margin-left: 0px;
+    margin-right: auto;
+    width: 40%;
+    height: 15%;
+   
+}
+
+ 

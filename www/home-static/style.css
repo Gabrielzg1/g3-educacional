@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 .pag{
     color: steelblue;
      text-align: center;
@@ -15,6 +15,7 @@
  body{
      background-color: silver;
      background-image: url(./img/bmath.png);
+     font-family:  'Poppins', sans-serif;
  }
  .myButton {
      box-shadow:inset -1px 0px 0px 0px #dcecfb;

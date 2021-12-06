@@ -47,9 +47,9 @@ app.get('/game', function (req, res) {
     res.render('./game/index', { username: username })     // linha de código para desenvolvimento ( Temporário )
     if (req.query.userid && req.query.userid != undefined && req.session.userid) {
         var username = req.query.userid
-        // res.render('./game/index', { username: username }) //COMANDO DESATIVADO PARA DESENVOLVIMENTO ( definitiva )
+        //res.render('./game/index', { username: username }) //COMANDO DESATIVADO PARA DESENVOLVIMENTO ( definitiva )
     } else {
-        //  res.redirect('/login') //COMANDO DESATIVADO PARA DESENVOLVIMENTO ( definitiva )
+        //res.redirect('/login') //COMANDO DESATIVADO PARA DESENVOLVIMENTO ( definitiva )
     }
 
 

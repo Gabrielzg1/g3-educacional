@@ -1,0 +1,33 @@
+body{
+    display: block;
+   background-color: white;
+}
+canvas{
+    border:5px solid rgb(30, 255, 0);
+    background-color: black;
+    z-index: 0;
+}
+
+.Home-body{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px 10px; 
+  }
+
+.nav-timer{
+    display: grid;
+    grid-template-columns: 800px 50px;
+    background-color: rgb(221, 221, 221);
+}
+a{
+    text-decoration: none;
+    padding-left: 10px;
+    width: fit-content;
+
+}
+.nav-timer, #cron{
+    font-size: 30px;
+}
+.info{
+    margin-right: 10px;
+}

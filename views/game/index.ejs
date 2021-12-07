@@ -1,0 +1,43 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Jogo Educacional</title>
+    <link rel="stylesheet" href="game-static/style.css">
+</head>
+
+<body>
+    <!--Barra de navegacao com cronometro centralizado-->
+    <div class="nav-timer">
+        <a href="/">Home</a>
+        <div id="cron">00:00</div>
+
+    </div>
+    <div class="Home-body">
+        <div class="Ranking">
+            <h1>Ranking</h1>
+            <h2>
+                <%= username %>
+            </h2>
+        </div>
+
+        <div class="Jogo">
+            <canvas id="canvas" width="900" height="900"></canvas>
+        </div>
+        <div class="Pontuacao">
+            <h1>Tabela de Pontos</h1>
+        </div>
+    </div>
+    <div class="buttons">
+        <button onclick="iniciar(); //start(); // função de iniciar o jogo e timer">Start</button>
+        <button onclick="parar();">Stop</button>
+    </div>
+    <script type="text/javascript" src="game-static/main.js"></script>
+    <script type="text/javascript" src="game-static/validacao.js"></script>
+    <script type="text/javascript" src="game-static/cronometro.js"></script>
+
+    <script>
+
+
+    </script>
+
+</body>

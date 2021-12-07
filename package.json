@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Gabrielzg1/g3-educacional#readme",
   "dependencies": {
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "nodemon": "^2.0.15"

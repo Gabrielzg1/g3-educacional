@@ -6,8 +6,6 @@ const path = require('path');
 const port = 3030
 const host = 'localhost'
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
 app.use(express.static("www"));
 app.set('view engine', 'ejs')
 
@@ -32,16 +30,6 @@ app.get('/login', function (req, res) {
     }
 
 });
-app.get('/sobre', function (req, res) {
-    res.sendFile(path.join(__dirname, './views/sobre/index.html'));
-
-});
-
-
-app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, './views/home/index.html'));
-});
-//configuração do jogo
 app.get('/game', function (req, res) {
     var username = "Nome do usuário" // linha de código para desenvolvimento ( Temporário )
     res.render('./game/index', { username: username })     // linha de código para desenvolvimento ( Temporário )
@@ -54,6 +42,18 @@ app.get('/game', function (req, res) {
 
 
 });
+
+app.get('/sobre', function (req, res) {
+    res.sendFile(path.join(__dirname, './views/sobre/index.html'));
+
+});
+
+
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname, './views/home/index.html'));
+});
+
+//configuração do jogo
 
 
 app.listen(port, function () {

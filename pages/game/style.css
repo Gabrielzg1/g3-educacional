@@ -4,7 +4,6 @@ body{
 }
 .myCanvas{
     border:5px solid rgb(30, 255, 0);
-    background-color: black;
     z-index: 0;
 }
 

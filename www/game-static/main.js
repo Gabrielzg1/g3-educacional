@@ -18,26 +18,6 @@ var n5 = document.getElementById("n5");
 var n6 = document.getElementById("n6");
 var n7 = document.getElementById("n7");
 var n8 = document.getElementById("n8");
-var c = document.getElementById("myCanvas");
-var ctx = c.getContext("2d");
-var c2 = document.getElementById("myCanvas2");
-var ctx2 = c2.getContext("2d");
-var cenario = document.getElementById("cenario");
-var carro = document.getElementById("carrinho");
-var placaa = document.getElementById("placaa");
-var placab = document.getElementById("placab");
-var monit = document.getElementById("monitorf");
-var rec = document.getElementById("rec");
-var int = document.getElementById("int");
-var x = document.getElementById("x");
-var n1 = document.getElementById("n1");
-var n2 = document.getElementById("n2");
-var n3 = document.getElementById("n3");
-var n4 = document.getElementById("n4");
-var n5 = document.getElementById("n5");
-var n6 = document.getElementById("n6");
-var n7 = document.getElementById("n7");
-var n8 = document.getElementById("n8");
 var n9 = document.getElementById("n9");
 var n10 = document.getElementById("n10");
 var n12 = document.getElementById("n12");
@@ -75,6 +55,7 @@ var esquerda = true, direita = false;
 var count = true;
 var g = true;
 
+
 monitor();
 
 function Atualizar() {
@@ -88,9 +69,73 @@ function Atualizar() {
 
 setInterval(Atualizar, 1);
 
+function background() {
+    yback = yback + 0.5;
+    if (yback == 930) {
+        yback = 0;
+    }
+    if (yback == 800) {
+        g = true;
+    }
+    ctx.clearRect(0, 0, 1890, 930);
+    ctx.drawImage(back, 0, yback);
+    ctx.drawImage(back, 0, yback - 930);
+}
+
+function gameover() {
+    alert("Acabou!");
+}
+
 function monitorOn() {
     ctx2.drawImage(monit, 0, 0);
 }
+
+function jogar() {
+    ctx.drawImage(carro, xm, 700);
+}
+
+function comparar() {
+    if (g == true) {
+        if (resposta == true) {
+            if (xm == 465 && Math.abs((450) - yback) < 20) {
+                pontos = pontos + 10;
+                document.getElementById("Pontos").innerHTML = pontos;
+                limpatela();
+                monitor();
+                g = false;
+            }
+        }
+        else {
+            if (xm == 1235 && Math.abs((450) - yback) < 20) {
+                pontos = pontos + 10;
+                document.getElementById("Pontos").innerHTML = pontos;
+                limpatela();
+                monitor();
+                g = false;
+            }
+        }
+    }
+    console.log(pontos);
+}
+
+document.addEventListener('keydown', function (e) {
+
+
+    //left
+    if (e.keyCode == 37) {
+        xm = 465;
+        esquerda = true;
+        direita = false;
+    }
+
+    //right
+    else if (e.keyCode == 39) {
+        xm = 1235;
+        esquerda = false;
+        direita = true;
+    }
+
+});
 
 function projetajogo() {
 
@@ -137,6 +182,60 @@ function projetajogo() {
     for (i = grau; i > 0; i--) {
         exp.push(i);
     }
+
+}
+
+function oqresolve() {
+    //
+    if (quest == true) {
+        resolveint();
+    }
+    else {
+        resolvedev();
+    }
+}
+
+function resolveint() {
+
+    for (i = 0; i < grau; i++) {
+        numerosr[i] = numeros[i];
+        frac[i] = exp[i] + 1;
+        expr[i] = exp[i] + 1;
+    }
+    for (i = 0; i < sinal.length; i++) {
+        sinalr[i] = sinal[i];
+    }
+    sinalr.push('+C');
+    fracp = true;
+
+
+}
+
+function resolvedev() {
+
+    for (i = 0; i <= grau; i++) {
+        if (grau == 1) {
+            numerosr[i] = numeros[i] * exp[i];
+            break;
+        }
+        numerosr[i] = numeros[i] * exp[i];
+    }
+    for (i = 0; i < grau; i++) {
+        expr[i] = exp[i] - 1;
+    }
+    expr.pop();
+
+    if (grau != 1) {
+        numerosr.pop();
+    }
+
+    for (i = 0; i <= sinal.length; i++) {
+        sinalr[i] = sinal[i];
+    }
+
+    fracp = false;
+    sinalr.pop();
+
 
 }
 
@@ -362,961 +461,63 @@ function imprime_opcs() {
     }
 }
 
-function derivada_certaemA() {
-    // Primeiro Grau
-    if (grau == 1) {
-        if (numerosr[0] == 1) {
-            ctx2.drawImage(n1, 490, 180);
-        }
-        else if (numerosr[0] == 2) {
-            ctx2.drawImage(n2, 490, 180);
-        }
-        else if (numerosr[0] == 3) {
-            ctx2.drawImage(n3, 490, 180);
-        }
-        else if (numerosr[0] == 4) {
-            ctx2.drawImage(n4, 490, 180);
-        }
-        else if (numerosr[0] == 5) {
-            ctx2.drawImage(n5, 490, 180);
-        }
-    }
-    //Segundo Grau
-    else if (grau == 2) {
-        ctx2.drawImage(x, 510, 180);
-        if (numerosr[0] == 1) {
-            ctx2.drawImage(n1, 480, 180);
-        }
-        else if (numerosr[0] == 2) {
-            ctx2.drawImage(n2, 480, 180);
-        }
-        else if (numerosr[0] == 3) {
-            ctx2.drawImage(n3, 480, 180);
-        }
-        else if (numerosr[0] == 4) {
-            ctx2.drawImage(n4, 480, 180);
-        }
-        else if (numerosr[0] == 5) {
-            ctx2.drawImage(n5, 480, 180);
-        }
-        else if (numerosr[0] == 6) {
-            ctx2.drawImage(n6, 480, 180);
-        }
-        else if (numerosr[0] == 7) {
-            ctx2.drawImage(n7, 480, 180);
-        }
-        else if (numerosr[0] == 8) {
-            ctx2.drawImage(n8, 480, 180);
-        }
-        else if (numerosr[0] == 9) {
-            ctx2.drawImage(n9, 480, 180);
-        }
-        else if (numerosr[0] == 10) {
-            ctx2.drawImage(n10, 480, 180);
-        }
-        //Sinal
-        if (sinalr[0] == "+") {
-            ctx2.drawImage(sum, 545, 180);
-        }
-        else {
-            ctx2.drawImage(sub, 545, 180);
-        }
-        //Segundo coeficiente (x^0)
-        if (numerosr[1] == 1) {
-            ctx2.drawImage(n1, 590, 180);
-        }
-        else if (numerosr[1] == 2) {
-            ctx2.drawImage(n2, 590, 180);
-        }
-        else if (numerosr[1] == 3) {
-            ctx2.drawImage(n3, 590, 180);
-        }
-        else if (numerosr[1] == 4) {
-            ctx2.drawImage(n4, 590, 180);
-        }
-        else if (numerosr[1] == 5) {
-            ctx2.drawImage(n5, 590, 180);
-        }
-        else if (numerosr[1] == 6) {
-            ctx2.drawImage(n6, 590, 180);
-        }
-        else if (numerosr[1] == 7) {
-            ctx2.drawImage(n7, 590, 180);
-        }
-        else if (numerosr[1] == 8) {
-            ctx2.drawImage(n8, 590, 180);
-        }
-        else if (numerosr[1] == 9) {
-            ctx2.drawImage(n9, 590, 180);
-        }
-        else if (numerosr[1] == 10) {
-            ctx2.drawImage(n10, 590, 180);
-        }
-    }
-    // Terceiro Grau
-    else if (grau == 3) {
-        ctx2.drawImage(x, 510, 180);
-        ctx2.drawImage(n2, 535, 150);
-        if (numerosr[0] == 1) {
-            ctx2.drawImage(n1, 480, 180);
-        }
-        else if (numerosr[0] == 2) {
-            ctx2.drawImage(n2, 480, 180);
-        }
-        else if (numerosr[0] == 3) {
-            ctx2.drawImage(n3, 480, 180);
-        }
-        else if (numerosr[0] == 4) {
-            ctx2.drawImage(n4, 480, 180);
-        }
-        else if (numerosr[0] == 5) {
-            ctx2.drawImage(n5, 480, 180);
-        }
-        else if (numerosr[0] == 6) {
-            ctx2.drawImage(n6, 480, 180);
-        }
-        else if (numerosr[0] == 7) {
-            ctx2.drawImage(n7, 480, 180);
-        }
-        else if (numerosr[0] == 8) {
-            ctx2.drawImage(n8, 480, 180);
-        }
-        else if (numerosr[0] == 9) {
-            ctx2.drawImage(n9, 480, 180);
-        }
-        else if (numerosr[0] == 10) {
-            ctx2.drawImage(n10, 480, 180);
-        }
-        else if (numerosr[0] == 12) {
-            ctx2.drawImage(n12, 1180, 180);
-        }
-        //Sinal
-        if (sinalr[0] == "+") {
-            ctx2.drawImage(sum, 570, 180);
-        }
-        else {
-            ctx2.drawImage(sub, 570, 180);
-        }
-        //Segundo coeficiente (x^1)
-        if (numerosr[1] == 1) {
-            ctx2.drawImage(n1, 610, 180);
-        }
-        else if (numerosr[1] == 2) {
-            ctx2.drawImage(n2, 610, 180);
-        }
-        else if (numerosr[1] == 3) {
-            ctx2.drawImage(n3, 610, 180);
-        }
-        else if (numerosr[1] == 4) {
-            ctx2.drawImage(n4, 610, 180);
-        }
-        else if (numerosr[1] == 5) {
-            ctx2.drawImage(n5, 610, 180);
-        }
-        else if (numerosr[1] == 6) {
-            ctx2.drawImage(n6, 610, 180);
-        }
-        else if (numerosr[1] == 7) {
-            ctx2.drawImage(n7, 610, 180);
-        }
-        else if (numerosr[1] == 8) {
-            ctx2.drawImage(n8, 610, 180);
-        }
-        else if (numerosr[1] == 9) {
-            ctx2.drawImage(n9, 610, 180);
-        }
-        else if (numerosr[1] == 10) {
-            ctx2.drawImage(n10, 610, 180);
-        }
-        ctx2.drawImage(x, 640, 180);
-        //Sinal 2
-        if (sinalr[1] == "+") {
-            ctx2.drawImage(sum, 680, 180);
-        }
-        else {
-            ctx2.drawImage(sub, 680, 180);
-        }
-        //Terceiro coeficiente (x^0)
-        if (numerosr[2] == 1) {
-            ctx2.drawImage(n1, 720, 180);
-        }
-        else if (numerosr[2] == 2) {
-            ctx2.drawImage(n2, 720, 180);
-        }
-        else if (numerosr[2] == 3) {
-            ctx2.drawImage(n3, 720, 180);
-        }
-        else if (numerosr[2] == 4) {
-            ctx2.drawImage(n4, 720, 180);
-        }
-        else if (numerosr[2] == 5) {
-            ctx2.drawImage(n5, 720, 180);
-        }
-        else if (numerosr[2] == 6) {
-            ctx2.drawImage(n6, 720, 180);
-        }
-        else if (numerosr[2] == 7) {
-            ctx2.drawImage(n7, 720, 180);
-        }
-        else if (numerosr[2] == 8) {
-            ctx2.drawImage(n8, 720, 180);
-        }
-        else if (numerosr[2] == 9) {
-            ctx2.drawImage(n9, 720, 180);
-        }
-        else if (numerosr[2] == 10) {
-            ctx2.drawImage(n10, 720, 180);
-        }
-    }
-    // Resposta Errada | Derivada Errada em B
-    // Primeiro Grau
-    if (grau == 1) {
-        if (numeroe[0] == 1) {
-            ctx2.drawImage(n1, 1190, 180);
-        }
-        else if (numeroe[0] == 2) {
-            ctx2.drawImage(n2, 1190, 180);
-        }
-        else if (numeroe[0] == 3) {
-            ctx2.drawImage(n3, 1190, 180);
-        }
-        else if (numeroe[0] == 4) {
-            ctx2.drawImage(n4, 1190, 180);
-        }
-        else if (numeroe[0] == 5) {
-            ctx2.drawImage(n5, 1190, 180);
-        }
-    }
-    //Segundo Grau
-    else if (grau == 2) {
-        ctx2.drawImage(x, 1210, 180);
-        if (numeroe[0] == 1) {
-            ctx2.drawImage(n1, 1180, 180);
-        }
-        else if (numeroe[0] == 2) {
-            ctx2.drawImage(n2, 1180, 180);
-        }
-        else if (numeroe[0] == 3) {
-            ctx2.drawImage(n3, 1180, 180);
-        }
-        else if (numeroe[0] == 4) {
-            ctx2.drawImage(n4, 1180, 180);
-        }
-        else if (numeroe[0] == 5) {
-            ctx2.drawImage(n5, 1180, 180);
-        }
-        else if (numeroe[0] == 6) {
-            ctx2.drawImage(n6, 1180, 180);
-        }
-        else if (numeroe[0] == 7) {
-            ctx2.drawImage(n7, 1180, 180);
-        }
-        else if (numeroe[0] == 8) {
-            ctx2.drawImage(n8, 1180, 180);
-        }
-        else if (numeroe[0] == 9) {
-            ctx2.drawImage(n9, 1180, 180);
-        }
-        else if (numeroe[0] == 10) {
-            ctx2.drawImage(n10, 1180, 180);
-        }
-        //Sinal
-        if (sinalr[0] == "+") {
-            ctx2.drawImage(sum, 1245, 180);
-        }
-        else {
-            ctx2.drawImage(sub, 1245, 180);
-        }
-        //Segundo coeficiente (x^0)
-        if (numeroe[1] == 1) {
-            ctx2.drawImage(n1, 1290, 180);
-        }
-        else if (numeroe[1] == 2) {
-            ctx2.drawImage(n2, 1290, 180);
-        }
-        else if (numeroe[1] == 3) {
-            ctx2.drawImage(n3, 1290, 180);
-        }
-        else if (numeroe[1] == 4) {
-            ctx2.drawImage(n4, 1290, 180);
-        }
-        else if (numeroe[1] == 5) {
-            ctx2.drawImage(n5, 1290, 180);
-        }
-        else if (numeroe[1] == 6) {
-            ctx2.drawImage(n6, 1290, 180);
-        }
-        else if (numeroe[1] == 7) {
-            ctx2.drawImage(n7, 1290, 180);
-        }
-        else if (numeroe[1] == 8) {
-            ctx2.drawImage(n8, 1290, 180);
-        }
-        else if (numeroe[1] == 9) {
-            ctx2.drawImage(n9, 1290, 180);
-        }
-        else if (numeroe[1] == 10) {
-            ctx2.drawImage(n10, 1290, 180);
-        }
-    }
-    // Terceiro Grau
-    else if (grau == 3) {
-        ctx2.drawImage(x, 1210, 180);
-        ctx2.drawImage(n2, 1235, 150);
-        if (numeroe[0] == 1) {
-            ctx2.drawImage(n1, 1180, 180);
-        }
-        else if (numeroe[0] == 2) {
-            ctx2.drawImage(n2, 1180, 180);
-        }
-        else if (numeroe[0] == 3) {
-            ctx2.drawImage(n3, 1180, 180);
-        }
-        else if (numeroe[0] == 4) {
-            ctx2.drawImage(n4, 1180, 180);
-        }
-        else if (numeroe[0] == 5) {
-            ctx2.drawImage(n5, 1180, 180);
-        }
-        else if (numeroe[0] == 6) {
-            ctx2.drawImage(n6, 1180, 180);
-        }
-        else if (numeroe[0] == 7) {
-            ctx2.drawImage(n7, 1180, 180);
-        }
-        else if (numeroe[0] == 8) {
-            ctx2.drawImage(n8, 1180, 180);
-        }
-        else if (numeroe[0] == 9) {
-            ctx2.drawImage(n9, 1180, 180);
-        }
-        else if (numeroe[0] == 10) {
-            ctx2.drawImage(n10, 1180, 180);
-        }
-        //Sinal
-        if (sinalr[0] == "+") {
-            ctx2.drawImage(sum, 1270, 180);
-        }
-        else {
-            ctx2.drawImage(sub, 1270, 180);
-        }
-        //Segundo coeficiente (x^1)
-        if (numeroe[1] == 1) {
-            ctx2.drawImage(n1, 1310, 180);
-        }
-        else if (numeroe[1] == 2) {
-            ctx2.drawImage(n2, 1310, 180);
-        }
-        else if (numeroe[1] == 3) {
-            ctx2.drawImage(n3, 1310, 180);
-        }
-        else if (numeroe[1] == 4) {
-            ctx2.drawImage(n4, 1310, 180);
-        }
-        else if (numeroe[1] == 5) {
-            ctx2.drawImage(n5, 1310, 180);
-        }
-        else if (numeroe[1] == 6) {
-            ctx2.drawImage(n6, 1310, 180);
-        }
-        else if (numeroe[1] == 7) {
-            ctx2.drawImage(n7, 1310, 180);
-        }
-        else if (numeroe[1] == 8) {
-            ctx2.drawImage(n8, 1310, 180);
-        }
-        else if (numeroe[1] == 9) {
-            ctx2.drawImage(n9, 1310, 180);
-        }
-        else if (numeroe[1] == 10) {
-            ctx2.drawImage(n10, 1310, 180);
-        }
-        ctx2.drawImage(x, 1340, 180);
-        //Sinal 2
-        if (sinalr[1] == "+") {
-            ctx2.drawImage(sum, 1380, 180);
-        }
-        else {
-            ctx2.drawImage(sub, 1380, 180);
-        }
-        //Terceiro coeficiente (x^0)
-        if (numeroe[2] == 1) {
-            ctx2.drawImage(n1, 1420, 180);
-        }
-        else if (numeroe[2] == 2) {
-            ctx2.drawImage(n2, 1420, 180);
-        }
-        else if (numeroe[2] == 3) {
-            ctx2.drawImage(n3, 1420, 180);
-        }
-        else if (numeroe[2] == 4) {
-            ctx2.drawImage(n4, 1420, 180);
-        }
-        else if (numeroe[2] == 5) {
-            ctx2.drawImage(n5, 1420, 180);
-        }
-        else if (numeroe[2] == 6) {
-            ctx2.drawImage(n6, 1420, 180);
-        }
-        else if (numeroe[2] == 7) {
-            ctx2.drawImage(n7, 1420, 180);
-        }
-        else if (numeroe[2] == 8) {
-            ctx2.drawImage(n8, 1420, 180);
-        }
-        else if (numeroe[2] == 9) {
-            ctx2.drawImage(n9, 1420, 180);
-        }
-        else if (numeroe[2] == 10) {
-            ctx2.drawImage(n10, 1420, 180);
-        }
-    }
-}
-
-function derivada_certaemB() {
-    // Primeiro Grau
-    if (grau == 1) {
-        if (numerosr[0] == 1) {
-            ctx2.drawImage(n1, 1190, 180);
-        }
-        else if (numerosr[0] == 2) {
-            ctx2.drawImage(n2, 1190, 180);
-        }
-        else if (numerosr[0] == 3) {
-            ctx2.drawImage(n3, 1190, 180);
-        }
-        else if (numerosr[0] == 4) {
-            ctx2.drawImage(n4, 1190, 180);
-        }
-        else if (numerosr[0] == 5) {
-            ctx2.drawImage(n5, 1190, 180);
-        }
-    }
-    //Segundo Grau
-    else if (grau == 2) {
-        ctx2.drawImage(x, 1210, 180);
-        if (numerosr[0] == 1) {
-            ctx2.drawImage(n1, 1180, 180);
-        }
-        else if (numerosr[0] == 2) {
-            ctx2.drawImage(n2, 1180, 180);
-        }
-        else if (numerosr[0] == 3) {
-            ctx2.drawImage(n3, 1180, 180);
-        }
-        else if (numerosr[0] == 4) {
-            ctx2.drawImage(n4, 1180, 180);
-        }
-        else if (numerosr[0] == 5) {
-            ctx2.drawImage(n5, 1180, 180);
-        }
-        else if (numerosr[0] == 6) {
-            ctx2.drawImage(n6, 1180, 180);
-        }
-        else if (numerosr[0] == 7) {
-            ctx2.drawImage(n7, 1180, 180);
-        }
-        else if (numerosr[0] == 8) {
-            ctx2.drawImage(n8, 1180, 180);
-        }
-        else if (numerosr[0] == 9) {
-            ctx2.drawImage(n9, 1180, 180);
-        }
-        else if (numerosr[0] == 10) {
-            ctx2.drawImage(n10, 1180, 180);
-        }
-        //Sinal
-        if (sinalr[0] == "+") {
-            ctx2.drawImage(sum, 1245, 180);
-        }
-        else {
-            ctx2.drawImage(sub, 1245, 180);
-        }
-        //Segundo coeficiente (x^0)
-        if (numerosr[1] == 1) {
-            ctx2.drawImage(n1, 1290, 180);
-        }
-        else if (numerosr[1] == 2) {
-            ctx2.drawImage(n2, 1290, 180);
-        }
-        else if (numerosr[1] == 3) {
-            ctx2.drawImage(n3, 1290, 180);
-        }
-        else if (numerosr[1] == 4) {
-            ctx2.drawImage(n4, 1290, 180);
-        }
-        else if (numerosr[1] == 5) {
-            ctx2.drawImage(n5, 1290, 180);
-        }
-        else if (numerosr[1] == 6) {
-            ctx2.drawImage(n6, 1290, 180);
-        }
-        else if (numerosr[1] == 7) {
-            ctx2.drawImage(n7, 1290, 180);
-        }
-        else if (numerosr[1] == 8) {
-            ctx2.drawImage(n8, 1290, 180);
-        }
-        else if (numerosr[1] == 9) {
-            ctx2.drawImage(n9, 1290, 180);
-        }
-        else if (numerosr[1] == 10) {
-            ctx2.drawImage(n10, 1290, 180);
-        }
-    }
-    // Terceiro Grau
-    else if (grau == 3) {
-        ctx2.drawImage(x, 1210, 180);
-        ctx2.drawImage(n2, 1235, 150);
-        if (numerosr[0] == 1) {
-            ctx2.drawImage(n1, 1180, 180);
-        }
-        else if (numerosr[0] == 2) {
-            ctx2.drawImage(n2, 1180, 180);
-        }
-        else if (numerosr[0] == 3) {
-            ctx2.drawImage(n3, 1180, 180);
-        }
-        else if (numerosr[0] == 4) {
-            ctx2.drawImage(n4, 1180, 180);
-        }
-        else if (numerosr[0] == 5) {
-            ctx2.drawImage(n5, 1180, 180);
-        }
-        else if (numerosr[0] == 6) {
-            ctx2.drawImage(n6, 1180, 180);
-        }
-        else if (numerosr[0] == 7) {
-            ctx2.drawImage(n7, 1180, 180);
-        }
-        else if (numerosr[0] == 8) {
-            ctx2.drawImage(n8, 1180, 180);
-        }
-        else if (numerosr[0] == 9) {
-            ctx2.drawImage(n9, 1180, 180);
-        }
-        else if (numerosr[0] == 10) {
-            ctx2.drawImage(n10, 1180, 180);
-        }
-        else if (numerosr[0] == 12) {
-            ctx2.drawImage(n12, 1180, 180);
-        }
-        //Sinal
-        if (sinalr[0] == "+") {
-            ctx2.drawImage(sum, 1270, 180);
-        }
-        else {
-            ctx2.drawImage(sub, 1270, 180);
-        }
-        //Segundo coeficiente (x^1)
-        if (numerosr[1] == 1) {
-            ctx2.drawImage(n1, 1310, 180);
-        }
-        else if (numerosr[1] == 2) {
-            ctx2.drawImage(n2, 1310, 180);
-        }
-        else if (numerosr[1] == 3) {
-            ctx2.drawImage(n3, 1310, 180);
-        }
-        else if (numerosr[1] == 4) {
-            ctx2.drawImage(n4, 1310, 180);
-        }
-        else if (numerosr[1] == 5) {
-            ctx2.drawImage(n5, 1310, 180);
-        }
-        else if (numerosr[1] == 6) {
-            ctx2.drawImage(n6, 1310, 180);
-        }
-        else if (numerosr[1] == 7) {
-            ctx2.drawImage(n7, 1310, 180);
-        }
-        else if (numerosr[1] == 8) {
-            ctx2.drawImage(n8, 1310, 180);
-        }
-        else if (numerosr[1] == 9) {
-            ctx2.drawImage(n9, 1310, 180);
-        }
-        else if (numerosr[1] == 10) {
-            ctx2.drawImage(n10, 1310, 180);
-        }
-        ctx2.drawImage(x, 1340, 180);
-        //Sinal 2
-        if (sinalr[1] == "+") {
-            ctx2.drawImage(sum, 1380, 180);
-        }
-        else {
-            ctx2.drawImage(sub, 1380, 180);
-        }
-        //Terceiro coeficiente (x^0)
-        if (numerosr[2] == 1) {
-            ctx2.drawImage(n1, 1420, 180);
-        }
-        else if (numerosr[2] == 2) {
-            ctx2.drawImage(n2, 1420, 180);
-        }
-        else if (numerosr[2] == 3) {
-            ctx2.drawImage(n3, 1420, 180);
-        }
-        else if (numerosr[2] == 4) {
-            ctx2.drawImage(n4, 1420, 180);
-        }
-        else if (numerosr[2] == 5) {
-            ctx2.drawImage(n5, 1420, 180);
-        }
-        else if (numerosr[2] == 6) {
-            ctx2.drawImage(n6, 1420, 180);
-        }
-        else if (numerosr[2] == 7) {
-            ctx2.drawImage(n7, 1420, 180);
-        }
-        else if (numerosr[2] == 8) {
-            ctx2.drawImage(n8, 1420, 180);
-        }
-        else if (numerosr[2] == 9) {
-            ctx2.drawImage(n9, 1420, 180);
-        }
-        else if (numerosr[2] == 10) {
-            ctx2.drawImage(n10, 1420, 180);
-        }
-    }
-    // Derivada Errada em A = 
-    // Primeiro Grau
-    if (grau == 1) {
-        if (numeroe[0] == 1) {
-            ctx2.drawImage(n1, 490, 180);
-        }
-        else if (numeroe[0] == 2) {
-            ctx2.drawImage(n2, 490, 180);
-        }
-        else if (numeroe[0] == 3) {
-            ctx2.drawImage(n3, 490, 180);
-        }
-        else if (numeroe[0] == 4) {
-            ctx2.drawImage(n4, 490, 180);
-        }
-        else if (numeroe[0] == 5) {
-            ctx2.drawImage(n5, 490, 180);
-        }
-    }
-    //Segundo Grau
-    else if (grau == 2) {
-        ctx2.drawImage(x, 510, 180);
-        if (numeroe[0] == 1) {
-            ctx2.drawImage(n1, 480, 180);
-        }
-        else if (numeroe[0] == 2) {
-            ctx2.drawImage(n2, 480, 180);
-        }
-        else if (numeroe[0] == 3) {
-            ctx2.drawImage(n3, 480, 180);
-        }
-        else if (numeroe[0] == 4) {
-            ctx2.drawImage(n4, 480, 180);
-        }
-        else if (numeroe[0] == 5) {
-            ctx2.drawImage(n5, 480, 180);
-        }
-        else if (numeroe[0] == 6) {
-            ctx2.drawImage(n6, 480, 180);
-        }
-        else if (numeroe[0] == 7) {
-            ctx2.drawImage(n7, 480, 180);
-        }
-        else if (numeroe[0] == 8) {
-            ctx2.drawImage(n8, 480, 180);
-        }
-        else if (numeroe[0] == 9) {
-            ctx2.drawImage(n9, 480, 180);
-        }
-        else if (numeroe[0] == 10) {
-            ctx2.drawImage(n10, 480, 180);
-        }
-        //Sinal
-        if (sinalr[0] == "+") {
-            ctx2.drawImage(sum, 545, 180);
-        }
-        else {
-            ctx2.drawImage(sub, 545, 180);
-        }
-        //Segundo coeficiente (x^0)
-        if (numeroe[1] == 1) {
-            ctx2.drawImage(n1, 590, 180);
-        }
-        else if (numeroe[1] == 2) {
-            ctx2.drawImage(n2, 590, 180);
-        }
-        else if (numeroe[1] == 3) {
-            ctx2.drawImage(n3, 590, 180);
-        }
-        else if (numeroe[1] == 4) {
-            ctx2.drawImage(n4, 590, 180);
-        }
-        else if (numeroe[1] == 5) {
-            ctx2.drawImage(n5, 590, 180);
-        }
-        else if (numeroe[1] == 6) {
-            ctx2.drawImage(n6, 590, 180);
-        }
-        else if (numeroe[1] == 7) {
-            ctx2.drawImage(n7, 590, 180);
-        }
-        else if (numeroe[1] == 8) {
-            ctx2.drawImage(n8, 590, 180);
-        }
-        else if (numeroe[1] == 9) {
-            ctx2.drawImage(n9, 590, 180);
-        }
-        else if (numeroe[1] == 10) {
-            ctx2.drawImage(n10, 590, 180);
-        }
-    }
-    // Terceiro Grau
-    else if (grau == 3) {
-        ctx2.drawImage(x, 510, 180);
-        ctx2.drawImage(n2, 535, 150);
-        if (numeroe[0] == 1) {
-            ctx2.drawImage(n1, 480, 180);
-        }
-        else if (numeroe[0] == 2) {
-            ctx2.drawImage(n2, 480, 180);
-        }
-        else if (numeroe[0] == 3) {
-            ctx2.drawImage(n3, 480, 180);
-        }
-        else if (numeroe[0] == 4) {
-            ctx2.drawImage(n4, 480, 180);
-        }
-        else if (numeroe[0] == 5) {
-            ctx2.drawImage(n5, 480, 180);
-        }
-        else if (numeroe[0] == 6) {
-            ctx2.drawImage(n6, 480, 180);
-        }
-        else if (numeroe[0] == 7) {
-            ctx2.drawImage(n7, 480, 180);
-        }
-        else if (numeroe[0] == 8) {
-            ctx2.drawImage(n8, 480, 180);
-        }
-        else if (numeroe[0] == 9) {
-            ctx2.drawImage(n9, 480, 180);
-        }
-        else if (numeroe[0] == 10) {
-            ctx2.drawImage(n10, 480, 180);
-        }
-        //Sinal
-        if (sinalr[0] == "+") {
-            ctx2.drawImage(sum, 570, 180);
-        }
-        else {
-            ctx2.drawImage(sub, 570, 180);
-        }
-        //Segundo coeficiente (x^1)
-        if (numeroe[1] == 1) {
-            ctx2.drawImage(n1, 610, 180);
-        }
-        else if (numeroe[1] == 2) {
-            ctx2.drawImage(n2, 610, 180);
-        }
-        else if (numeroe[1] == 3) {
-            ctx2.drawImage(n3, 610, 180);
-        }
-        else if (numeroe[1] == 4) {
-            ctx2.drawImage(n4, 610, 180);
-        }
-        else if (numeroe[1] == 5) {
-            ctx2.drawImage(n5, 610, 180);
-        }
-        else if (numeroe[1] == 6) {
-            ctx2.drawImage(n6, 610, 180);
-        }
-        else if (numeroe[1] == 7) {
-            ctx2.drawImage(n7, 610, 180);
-        }
-        else if (numeroe[1] == 8) {
-            ctx2.drawImage(n8, 610, 180);
-        }
-        else if (numeroe[1] == 9) {
-            ctx2.drawImage(n9, 610, 180);
-        }
-        else if (numeroe[1] == 10) {
-            ctx2.drawImage(n10, 610, 180);
-        }
-        ctx2.drawImage(x, 640, 180);
-        //Sinal 2
-        if (sinalr[1] == "+") {
-            ctx2.drawImage(sum, 680, 180);
-        }
-        else {
-            ctx2.drawImage(sub, 680, 180);
-        }
-        //Terceiro coeficiente (x^0)
-        if (numeroe[2] == 1) {
-            ctx2.drawImage(n1, 720, 180);
-        }
-        else if (numeroe[2] == 2) {
-            ctx2.drawImage(n2, 720, 180);
-        }
-        else if (numeroe[2] == 3) {
-            ctx2.drawImage(n3, 720, 180);
-        }
-        else if (numeroe[2] == 4) {
-            ctx2.drawImage(n4, 720, 180);
-        }
-        else if (numeroe[2] == 5) {
-            ctx2.drawImage(n5, 720, 180);
-        }
-        else if (numeroe[2] == 6) {
-            ctx2.drawImage(n6, 720, 180);
-        }
-        else if (numeroe[2] == 7) {
-            ctx2.drawImage(n7, 720, 180);
-        }
-        else if (numeroe[2] == 8) {
-            ctx2.drawImage(n8, 720, 180);
-        }
-        else if (numeroe[2] == 9) {
-            ctx2.drawImage(n9, 720, 180);
-        }
-        else if (numeroe[2] == 10) {
-            ctx2.drawImage(n10, 720, 180);
-        }
-    }
-}
-
-function limpatela() {
-    ctx2.clearRect(0, 0, 1890, 300);
-}
-
-function monitor() {
-    monitorOn();
-
-    projetajogo();
-
-    oqresolve();
-
-    criaerro();
-
-    imprimequest();
-    nivel++;
-
-    // Limpar variáveis:
-
-    numeros = [];
-    exp = [];
-    frac = [];
-    numerosr = [];
-    numeroe = [];
-    expr = [];
-    sinalr = [];
-    sinal = [];
-
-}
-
-function limpa_tela() {
-    ctx.clearRect(0, 0, WIDTH, HEIGHT);
-}
-
-function gameover() {
-
-    
-}
-
-function jogar() {
-    ctx.drawImage(carro, xm, 700);
-}
-
-function background() {
-    yback = yback + 0.5;
-    if (yback == 930) {
-        yback = 0;
-    }
-    if (yback == 800) {
-        g = true;
-    }
-    ctx.clearRect(0, 0, 1890, 930);
-    ctx.drawImage(back, 0, yback);
-    ctx.drawImage(back, 0, yback - 930);
-}
-
-function comparar() {
-    if (g == true) {
-        if (resposta == true) {
-            if (xm == 465 && Math.abs((450) - yback) < 20) {
-                alert("opa");
-                pontos = pontos + 10;
-                document.getElementById("Pontos").innerHTML = pontos;
-                limpatela();
-                monitor();
-                g = false;
-            }
-        }
-        else {
-            if (xm == 1235 && Math.abs((450) - yback) < 20) {
-                alert("opa");
-                pontos = pontos + 10;
-                document.getElementById("Pontos").innerHTML = pontos;
-                limpatela();
-                monitor();
-                g = false;
-            }
-        }
-    }
-    console.log(pontos);
-}
-
-function oqresolve() {
-    //
+function criaerro() {
     if (quest == true) {
-        resolveint();
+        erraint();
     }
     else {
-        resolvedev();
+        erradev();
     }
 }
 
-function resolveint() {
+function erraint() {
 
-    for (i = 0; i < grau; i++) {
-        numerosr[i] = numeros[i];
-        frac[i] = exp[i] + 1;
-        expr[i] = exp[i] + 1;
-    }
-    for (i = 0; i < sinal.length; i++) {
-        sinalr[i] = sinal[i];
-    }
-    sinalr.push('+C');
-    fracp = true;
+    //Erro Numérico
+    let z = numerosr.length;
 
-
-}
-
-function resolvedev() {
-
-    for (i = 0; i <= grau; i++) {
-        if (grau == 1) {
-            numerosr[i] = numeros[i] * exp[i];
-            break;
+    for (z; z > 0; z--) {
+        numeroe[z - 1] = Math.floor(Math.random() * 5);
+        if (numeroe[z - 1] == numerosr[z - 1] || numeroe[z - 1] == 0) {
+            numeroe[z - 1] = Math.floor(Math.random() * 5);
+            if (numeroe[z - 1] == numerosr[z - 1] || numeroe[z - 1] == 0) {
+                numeroe[z - 1] = Math.floor(Math.random() * 5);
+                if (numeroe[z - 1] == numerosr[z - 1] || numeroe[z - 1] == 0) {
+                    numeroe[z - 1] = Math.floor(Math.random() * 5);
+                }
+            }
         }
-        numerosr[i] = numeros[i] * exp[i];
-    }
-    for (i = 0; i < grau; i++) {
-        expr[i] = exp[i] - 1;
-    }
-    expr.pop();
-
-    if (grau != 1) {
-        numerosr.pop();
     }
 
-    for (i = 0; i <= sinal.length; i++) {
-        sinalr[i] = sinal[i];
+}
+
+function erradev() {
+
+    //Erro Numérico
+    let z = numerosr.length;
+
+    for (z; z > 0; z--) {
+        numeroe[z - 1] = Math.floor(Math.random() * 5);
+        if (numeroe[z - 1] == numerosr[z - 1] || numeroe[z - 1] == 0) {
+            numeroe[z - 1] = Math.floor(Math.random() * 5);
+            if (numeroe[z - 1] == numerosr[z - 1] || numeroe[z - 1] == 0) {
+                numeroe[z - 1] = Math.floor(Math.random() * 5);
+                if (numeroe[z - 1] == numerosr[z - 1] || numeroe[z - 1] == 0) {
+                    numeroe[z - 1] = Math.floor(Math.random() * 5);
+                }
+            }
+        }
     }
 
-    fracp = false;
-    sinalr.pop();
+}
 
-
+function AouB() {
+    // Qual vai estar certo? A ou B
+    if (Math.random() * 10 < 5) {
+        resposta = true; // A
+    }
+    else {
+        resposta = false; // B
+    }
 }
 
 function integral_certaemA() {
@@ -2073,85 +1274,414 @@ function integral_certaemA() {
     }
 }
 
-function gameover() {
-    alert("Acabou!");
-}
-
-document.addEventListener('keydown', function (e) {
-
-
-    //left
-    if (e.keyCode == 37) {
-        xm = 465;
-        esquerda = true;
-        direita = false;
-    }
-
-    //right
-    else if (e.keyCode == 39) {
-        xm = 1235;
-        esquerda = false;
-        direita = true;
-    }
-
-});
-
-function criaerro() {
-    if (quest == true) {
-        erraint();
-    }
-    else {
-        erradev();
-    }
-}
-
-function erraint() {
-
-    //Erro Numérico
-    let z = numerosr.length;
-
-    for (z; z > 0; z--) {
-        numeroe[z - 1] = Math.floor(Math.random() * 5);
-        if (numeroe[z - 1] == numerosr[z - 1] || numeroe[z - 1] == 0) {
-            numeroe[z - 1] = Math.floor(Math.random() * 5);
-            if (numeroe[z - 1] == numerosr[z - 1] || numeroe[z - 1] == 0) {
-                numeroe[z - 1] = Math.floor(Math.random() * 5);
-                if (numeroe[z - 1] == numerosr[z - 1] || numeroe[z - 1] == 0) {
-                    numeroe[z - 1] = Math.floor(Math.random() * 5);
-                }
-            }
+function derivada_certaemA() {
+    // Primeiro Grau
+    if (grau == 1) {
+        if (numerosr[0] == 1) {
+            ctx2.drawImage(n1, 490, 180);
+        }
+        else if (numerosr[0] == 2) {
+            ctx2.drawImage(n2, 490, 180);
+        }
+        else if (numerosr[0] == 3) {
+            ctx2.drawImage(n3, 490, 180);
+        }
+        else if (numerosr[0] == 4) {
+            ctx2.drawImage(n4, 490, 180);
+        }
+        else if (numerosr[0] == 5) {
+            ctx2.drawImage(n5, 490, 180);
         }
     }
-
-}
-
-function erradev() {
-
-    //Erro Numérico
-    let z = numerosr.length;
-
-    for (z; z > 0; z--) {
-        numeroe[z - 1] = Math.floor(Math.random() * 5);
-        if (numeroe[z - 1] == numerosr[z - 1] || numeroe[z - 1] == 0) {
-            numeroe[z - 1] = Math.floor(Math.random() * 5);
-            if (numeroe[z - 1] == numerosr[z - 1] || numeroe[z - 1] == 0) {
-                numeroe[z - 1] = Math.floor(Math.random() * 5);
-                if (numeroe[z - 1] == numerosr[z - 1] || numeroe[z - 1] == 0) {
-                    numeroe[z - 1] = Math.floor(Math.random() * 5);
-                }
-            }
+    //Segundo Grau
+    else if (grau == 2) {
+        ctx2.drawImage(x, 510, 180);
+        if (numerosr[0] == 1) {
+            ctx2.drawImage(n1, 480, 180);
+        }
+        else if (numerosr[0] == 2) {
+            ctx2.drawImage(n2, 480, 180);
+        }
+        else if (numerosr[0] == 3) {
+            ctx2.drawImage(n3, 480, 180);
+        }
+        else if (numerosr[0] == 4) {
+            ctx2.drawImage(n4, 480, 180);
+        }
+        else if (numerosr[0] == 5) {
+            ctx2.drawImage(n5, 480, 180);
+        }
+        else if (numerosr[0] == 6) {
+            ctx2.drawImage(n6, 480, 180);
+        }
+        else if (numerosr[0] == 7) {
+            ctx2.drawImage(n7, 480, 180);
+        }
+        else if (numerosr[0] == 8) {
+            ctx2.drawImage(n8, 480, 180);
+        }
+        else if (numerosr[0] == 9) {
+            ctx2.drawImage(n9, 480, 180);
+        }
+        else if (numerosr[0] == 10) {
+            ctx2.drawImage(n10, 480, 180);
+        }
+        //Sinal
+        if (sinalr[0] == "+") {
+            ctx2.drawImage(sum, 545, 180);
+        }
+        else {
+            ctx2.drawImage(sub, 545, 180);
+        }
+        //Segundo coeficiente (x^0)
+        if (numerosr[1] == 1) {
+            ctx2.drawImage(n1, 590, 180);
+        }
+        else if (numerosr[1] == 2) {
+            ctx2.drawImage(n2, 590, 180);
+        }
+        else if (numerosr[1] == 3) {
+            ctx2.drawImage(n3, 590, 180);
+        }
+        else if (numerosr[1] == 4) {
+            ctx2.drawImage(n4, 590, 180);
+        }
+        else if (numerosr[1] == 5) {
+            ctx2.drawImage(n5, 590, 180);
+        }
+        else if (numerosr[1] == 6) {
+            ctx2.drawImage(n6, 590, 180);
+        }
+        else if (numerosr[1] == 7) {
+            ctx2.drawImage(n7, 590, 180);
+        }
+        else if (numerosr[1] == 8) {
+            ctx2.drawImage(n8, 590, 180);
+        }
+        else if (numerosr[1] == 9) {
+            ctx2.drawImage(n9, 590, 180);
+        }
+        else if (numerosr[1] == 10) {
+            ctx2.drawImage(n10, 590, 180);
         }
     }
-
-}
-
-function AouB() {
-    // Qual vai estar certo? A ou B
-    if (Math.random() * 10 < 5) {
-        resposta = true; // A
+    // Terceiro Grau
+    else if (grau == 3) {
+        ctx2.drawImage(x, 510, 180);
+        ctx2.drawImage(n2, 535, 150);
+        if (numerosr[0] == 1) {
+            ctx2.drawImage(n1, 480, 180);
+        }
+        else if (numerosr[0] == 2) {
+            ctx2.drawImage(n2, 480, 180);
+        }
+        else if (numerosr[0] == 3) {
+            ctx2.drawImage(n3, 480, 180);
+        }
+        else if (numerosr[0] == 4) {
+            ctx2.drawImage(n4, 480, 180);
+        }
+        else if (numerosr[0] == 5) {
+            ctx2.drawImage(n5, 480, 180);
+        }
+        else if (numerosr[0] == 6) {
+            ctx2.drawImage(n6, 480, 180);
+        }
+        else if (numerosr[0] == 7) {
+            ctx2.drawImage(n7, 480, 180);
+        }
+        else if (numerosr[0] == 8) {
+            ctx2.drawImage(n8, 480, 180);
+        }
+        else if (numerosr[0] == 9) {
+            ctx2.drawImage(n9, 480, 180);
+        }
+        else if (numerosr[0] == 10) {
+            ctx2.drawImage(n10, 480, 180);
+        }
+        else if (numerosr[0] == 12) {
+            ctx2.drawImage(n12, 1180, 180);
+        }
+        //Sinal
+        if (sinalr[0] == "+") {
+            ctx2.drawImage(sum, 570, 180);
+        }
+        else {
+            ctx2.drawImage(sub, 570, 180);
+        }
+        //Segundo coeficiente (x^1)
+        if (numerosr[1] == 1) {
+            ctx2.drawImage(n1, 610, 180);
+        }
+        else if (numerosr[1] == 2) {
+            ctx2.drawImage(n2, 610, 180);
+        }
+        else if (numerosr[1] == 3) {
+            ctx2.drawImage(n3, 610, 180);
+        }
+        else if (numerosr[1] == 4) {
+            ctx2.drawImage(n4, 610, 180);
+        }
+        else if (numerosr[1] == 5) {
+            ctx2.drawImage(n5, 610, 180);
+        }
+        else if (numerosr[1] == 6) {
+            ctx2.drawImage(n6, 610, 180);
+        }
+        else if (numerosr[1] == 7) {
+            ctx2.drawImage(n7, 610, 180);
+        }
+        else if (numerosr[1] == 8) {
+            ctx2.drawImage(n8, 610, 180);
+        }
+        else if (numerosr[1] == 9) {
+            ctx2.drawImage(n9, 610, 180);
+        }
+        else if (numerosr[1] == 10) {
+            ctx2.drawImage(n10, 610, 180);
+        }
+        ctx2.drawImage(x, 640, 180);
+        //Sinal 2
+        if (sinalr[1] == "+") {
+            ctx2.drawImage(sum, 680, 180);
+        }
+        else {
+            ctx2.drawImage(sub, 680, 180);
+        }
+        //Terceiro coeficiente (x^0)
+        if (numerosr[2] == 1) {
+            ctx2.drawImage(n1, 720, 180);
+        }
+        else if (numerosr[2] == 2) {
+            ctx2.drawImage(n2, 720, 180);
+        }
+        else if (numerosr[2] == 3) {
+            ctx2.drawImage(n3, 720, 180);
+        }
+        else if (numerosr[2] == 4) {
+            ctx2.drawImage(n4, 720, 180);
+        }
+        else if (numerosr[2] == 5) {
+            ctx2.drawImage(n5, 720, 180);
+        }
+        else if (numerosr[2] == 6) {
+            ctx2.drawImage(n6, 720, 180);
+        }
+        else if (numerosr[2] == 7) {
+            ctx2.drawImage(n7, 720, 180);
+        }
+        else if (numerosr[2] == 8) {
+            ctx2.drawImage(n8, 720, 180);
+        }
+        else if (numerosr[2] == 9) {
+            ctx2.drawImage(n9, 720, 180);
+        }
+        else if (numerosr[2] == 10) {
+            ctx2.drawImage(n10, 720, 180);
+        }
     }
-    else {
-        resposta = false; // B
+    // Resposta Errada | Derivada Errada em B
+    // Primeiro Grau
+    if (grau == 1) {
+        if (numeroe[0] == 1) {
+            ctx2.drawImage(n1, 1190, 180);
+        }
+        else if (numeroe[0] == 2) {
+            ctx2.drawImage(n2, 1190, 180);
+        }
+        else if (numeroe[0] == 3) {
+            ctx2.drawImage(n3, 1190, 180);
+        }
+        else if (numeroe[0] == 4) {
+            ctx2.drawImage(n4, 1190, 180);
+        }
+        else if (numeroe[0] == 5) {
+            ctx2.drawImage(n5, 1190, 180);
+        }
+    }
+    //Segundo Grau
+    else if (grau == 2) {
+        ctx2.drawImage(x, 1210, 180);
+        if (numeroe[0] == 1) {
+            ctx2.drawImage(n1, 1180, 180);
+        }
+        else if (numeroe[0] == 2) {
+            ctx2.drawImage(n2, 1180, 180);
+        }
+        else if (numeroe[0] == 3) {
+            ctx2.drawImage(n3, 1180, 180);
+        }
+        else if (numeroe[0] == 4) {
+            ctx2.drawImage(n4, 1180, 180);
+        }
+        else if (numeroe[0] == 5) {
+            ctx2.drawImage(n5, 1180, 180);
+        }
+        else if (numeroe[0] == 6) {
+            ctx2.drawImage(n6, 1180, 180);
+        }
+        else if (numeroe[0] == 7) {
+            ctx2.drawImage(n7, 1180, 180);
+        }
+        else if (numeroe[0] == 8) {
+            ctx2.drawImage(n8, 1180, 180);
+        }
+        else if (numeroe[0] == 9) {
+            ctx2.drawImage(n9, 1180, 180);
+        }
+        else if (numeroe[0] == 10) {
+            ctx2.drawImage(n10, 1180, 180);
+        }
+        //Sinal
+        if (sinalr[0] == "+") {
+            ctx2.drawImage(sum, 1245, 180);
+        }
+        else {
+            ctx2.drawImage(sub, 1245, 180);
+        }
+        //Segundo coeficiente (x^0)
+        if (numeroe[1] == 1) {
+            ctx2.drawImage(n1, 1290, 180);
+        }
+        else if (numeroe[1] == 2) {
+            ctx2.drawImage(n2, 1290, 180);
+        }
+        else if (numeroe[1] == 3) {
+            ctx2.drawImage(n3, 1290, 180);
+        }
+        else if (numeroe[1] == 4) {
+            ctx2.drawImage(n4, 1290, 180);
+        }
+        else if (numeroe[1] == 5) {
+            ctx2.drawImage(n5, 1290, 180);
+        }
+        else if (numeroe[1] == 6) {
+            ctx2.drawImage(n6, 1290, 180);
+        }
+        else if (numeroe[1] == 7) {
+            ctx2.drawImage(n7, 1290, 180);
+        }
+        else if (numeroe[1] == 8) {
+            ctx2.drawImage(n8, 1290, 180);
+        }
+        else if (numeroe[1] == 9) {
+            ctx2.drawImage(n9, 1290, 180);
+        }
+        else if (numeroe[1] == 10) {
+            ctx2.drawImage(n10, 1290, 180);
+        }
+    }
+    // Terceiro Grau
+    else if (grau == 3) {
+        ctx2.drawImage(x, 1210, 180);
+        ctx2.drawImage(n2, 1235, 150);
+        if (numeroe[0] == 1) {
+            ctx2.drawImage(n1, 1180, 180);
+        }
+        else if (numeroe[0] == 2) {
+            ctx2.drawImage(n2, 1180, 180);
+        }
+        else if (numeroe[0] == 3) {
+            ctx2.drawImage(n3, 1180, 180);
+        }
+        else if (numeroe[0] == 4) {
+            ctx2.drawImage(n4, 1180, 180);
+        }
+        else if (numeroe[0] == 5) {
+            ctx2.drawImage(n5, 1180, 180);
+        }
+        else if (numeroe[0] == 6) {
+            ctx2.drawImage(n6, 1180, 180);
+        }
+        else if (numeroe[0] == 7) {
+            ctx2.drawImage(n7, 1180, 180);
+        }
+        else if (numeroe[0] == 8) {
+            ctx2.drawImage(n8, 1180, 180);
+        }
+        else if (numeroe[0] == 9) {
+            ctx2.drawImage(n9, 1180, 180);
+        }
+        else if (numeroe[0] == 10) {
+            ctx2.drawImage(n10, 1180, 180);
+        }
+        //Sinal
+        if (sinalr[0] == "+") {
+            ctx2.drawImage(sum, 1270, 180);
+        }
+        else {
+            ctx2.drawImage(sub, 1270, 180);
+        }
+        //Segundo coeficiente (x^1)
+        if (numeroe[1] == 1) {
+            ctx2.drawImage(n1, 1310, 180);
+        }
+        else if (numeroe[1] == 2) {
+            ctx2.drawImage(n2, 1310, 180);
+        }
+        else if (numeroe[1] == 3) {
+            ctx2.drawImage(n3, 1310, 180);
+        }
+        else if (numeroe[1] == 4) {
+            ctx2.drawImage(n4, 1310, 180);
+        }
+        else if (numeroe[1] == 5) {
+            ctx2.drawImage(n5, 1310, 180);
+        }
+        else if (numeroe[1] == 6) {
+            ctx2.drawImage(n6, 1310, 180);
+        }
+        else if (numeroe[1] == 7) {
+            ctx2.drawImage(n7, 1310, 180);
+        }
+        else if (numeroe[1] == 8) {
+            ctx2.drawImage(n8, 1310, 180);
+        }
+        else if (numeroe[1] == 9) {
+            ctx2.drawImage(n9, 1310, 180);
+        }
+        else if (numeroe[1] == 10) {
+            ctx2.drawImage(n10, 1310, 180);
+        }
+        ctx2.drawImage(x, 1340, 180);
+        //Sinal 2
+        if (sinalr[1] == "+") {
+            ctx2.drawImage(sum, 1380, 180);
+        }
+        else {
+            ctx2.drawImage(sub, 1380, 180);
+        }
+        //Terceiro coeficiente (x^0)
+        if (numeroe[2] == 1) {
+            ctx2.drawImage(n1, 1420, 180);
+        }
+        else if (numeroe[2] == 2) {
+            ctx2.drawImage(n2, 1420, 180);
+        }
+        else if (numeroe[2] == 3) {
+            ctx2.drawImage(n3, 1420, 180);
+        }
+        else if (numeroe[2] == 4) {
+            ctx2.drawImage(n4, 1420, 180);
+        }
+        else if (numeroe[2] == 5) {
+            ctx2.drawImage(n5, 1420, 180);
+        }
+        else if (numeroe[2] == 6) {
+            ctx2.drawImage(n6, 1420, 180);
+        }
+        else if (numeroe[2] == 7) {
+            ctx2.drawImage(n7, 1420, 180);
+        }
+        else if (numeroe[2] == 8) {
+            ctx2.drawImage(n8, 1420, 180);
+        }
+        else if (numeroe[2] == 9) {
+            ctx2.drawImage(n9, 1420, 180);
+        }
+        else if (numeroe[2] == 10) {
+            ctx2.drawImage(n10, 1420, 180);
+        }
     }
 }
 
@@ -2907,4 +2437,445 @@ function integral_certaemB() {
             ctx2.drawImage(cmais, 745, 160);
         }
     }
+}
+
+function derivada_certaemB() {
+    // Primeiro Grau
+    if (grau == 1) {
+        if (numerosr[0] == 1) {
+            ctx2.drawImage(n1, 1190, 180);
+        }
+        else if (numerosr[0] == 2) {
+            ctx2.drawImage(n2, 1190, 180);
+        }
+        else if (numerosr[0] == 3) {
+            ctx2.drawImage(n3, 1190, 180);
+        }
+        else if (numerosr[0] == 4) {
+            ctx2.drawImage(n4, 1190, 180);
+        }
+        else if (numerosr[0] == 5) {
+            ctx2.drawImage(n5, 1190, 180);
+        }
+    }
+    //Segundo Grau
+    else if (grau == 2) {
+        ctx2.drawImage(x, 1210, 180);
+        if (numerosr[0] == 1) {
+            ctx2.drawImage(n1, 1180, 180);
+        }
+        else if (numerosr[0] == 2) {
+            ctx2.drawImage(n2, 1180, 180);
+        }
+        else if (numerosr[0] == 3) {
+            ctx2.drawImage(n3, 1180, 180);
+        }
+        else if (numerosr[0] == 4) {
+            ctx2.drawImage(n4, 1180, 180);
+        }
+        else if (numerosr[0] == 5) {
+            ctx2.drawImage(n5, 1180, 180);
+        }
+        else if (numerosr[0] == 6) {
+            ctx2.drawImage(n6, 1180, 180);
+        }
+        else if (numerosr[0] == 7) {
+            ctx2.drawImage(n7, 1180, 180);
+        }
+        else if (numerosr[0] == 8) {
+            ctx2.drawImage(n8, 1180, 180);
+        }
+        else if (numerosr[0] == 9) {
+            ctx2.drawImage(n9, 1180, 180);
+        }
+        else if (numerosr[0] == 10) {
+            ctx2.drawImage(n10, 1180, 180);
+        }
+        //Sinal
+        if (sinalr[0] == "+") {
+            ctx2.drawImage(sum, 1245, 180);
+        }
+        else {
+            ctx2.drawImage(sub, 1245, 180);
+        }
+        //Segundo coeficiente (x^0)
+        if (numerosr[1] == 1) {
+            ctx2.drawImage(n1, 1290, 180);
+        }
+        else if (numerosr[1] == 2) {
+            ctx2.drawImage(n2, 1290, 180);
+        }
+        else if (numerosr[1] == 3) {
+            ctx2.drawImage(n3, 1290, 180);
+        }
+        else if (numerosr[1] == 4) {
+            ctx2.drawImage(n4, 1290, 180);
+        }
+        else if (numerosr[1] == 5) {
+            ctx2.drawImage(n5, 1290, 180);
+        }
+        else if (numerosr[1] == 6) {
+            ctx2.drawImage(n6, 1290, 180);
+        }
+        else if (numerosr[1] == 7) {
+            ctx2.drawImage(n7, 1290, 180);
+        }
+        else if (numerosr[1] == 8) {
+            ctx2.drawImage(n8, 1290, 180);
+        }
+        else if (numerosr[1] == 9) {
+            ctx2.drawImage(n9, 1290, 180);
+        }
+        else if (numerosr[1] == 10) {
+            ctx2.drawImage(n10, 1290, 180);
+        }
+    }
+    // Terceiro Grau
+    else if (grau == 3) {
+        ctx2.drawImage(x, 1210, 180);
+        ctx2.drawImage(n2, 1235, 150);
+        if (numerosr[0] == 1) {
+            ctx2.drawImage(n1, 1180, 180);
+        }
+        else if (numerosr[0] == 2) {
+            ctx2.drawImage(n2, 1180, 180);
+        }
+        else if (numerosr[0] == 3) {
+            ctx2.drawImage(n3, 1180, 180);
+        }
+        else if (numerosr[0] == 4) {
+            ctx2.drawImage(n4, 1180, 180);
+        }
+        else if (numerosr[0] == 5) {
+            ctx2.drawImage(n5, 1180, 180);
+        }
+        else if (numerosr[0] == 6) {
+            ctx2.drawImage(n6, 1180, 180);
+        }
+        else if (numerosr[0] == 7) {
+            ctx2.drawImage(n7, 1180, 180);
+        }
+        else if (numerosr[0] == 8) {
+            ctx2.drawImage(n8, 1180, 180);
+        }
+        else if (numerosr[0] == 9) {
+            ctx2.drawImage(n9, 1180, 180);
+        }
+        else if (numerosr[0] == 10) {
+            ctx2.drawImage(n10, 1180, 180);
+        }
+        else if (numerosr[0] == 12) {
+            ctx2.drawImage(n12, 1180, 180);
+        }
+        //Sinal
+        if (sinalr[0] == "+") {
+            ctx2.drawImage(sum, 1270, 180);
+        }
+        else {
+            ctx2.drawImage(sub, 1270, 180);
+        }
+        //Segundo coeficiente (x^1)
+        if (numerosr[1] == 1) {
+            ctx2.drawImage(n1, 1310, 180);
+        }
+        else if (numerosr[1] == 2) {
+            ctx2.drawImage(n2, 1310, 180);
+        }
+        else if (numerosr[1] == 3) {
+            ctx2.drawImage(n3, 1310, 180);
+        }
+        else if (numerosr[1] == 4) {
+            ctx2.drawImage(n4, 1310, 180);
+        }
+        else if (numerosr[1] == 5) {
+            ctx2.drawImage(n5, 1310, 180);
+        }
+        else if (numerosr[1] == 6) {
+            ctx2.drawImage(n6, 1310, 180);
+        }
+        else if (numerosr[1] == 7) {
+            ctx2.drawImage(n7, 1310, 180);
+        }
+        else if (numerosr[1] == 8) {
+            ctx2.drawImage(n8, 1310, 180);
+        }
+        else if (numerosr[1] == 9) {
+            ctx2.drawImage(n9, 1310, 180);
+        }
+        else if (numerosr[1] == 10) {
+            ctx2.drawImage(n10, 1310, 180);
+        }
+        ctx2.drawImage(x, 1340, 180);
+        //Sinal 2
+        if (sinalr[1] == "+") {
+            ctx2.drawImage(sum, 1380, 180);
+        }
+        else {
+            ctx2.drawImage(sub, 1380, 180);
+        }
+        //Terceiro coeficiente (x^0)
+        if (numerosr[2] == 1) {
+            ctx2.drawImage(n1, 1420, 180);
+        }
+        else if (numerosr[2] == 2) {
+            ctx2.drawImage(n2, 1420, 180);
+        }
+        else if (numerosr[2] == 3) {
+            ctx2.drawImage(n3, 1420, 180);
+        }
+        else if (numerosr[2] == 4) {
+            ctx2.drawImage(n4, 1420, 180);
+        }
+        else if (numerosr[2] == 5) {
+            ctx2.drawImage(n5, 1420, 180);
+        }
+        else if (numerosr[2] == 6) {
+            ctx2.drawImage(n6, 1420, 180);
+        }
+        else if (numerosr[2] == 7) {
+            ctx2.drawImage(n7, 1420, 180);
+        }
+        else if (numerosr[2] == 8) {
+            ctx2.drawImage(n8, 1420, 180);
+        }
+        else if (numerosr[2] == 9) {
+            ctx2.drawImage(n9, 1420, 180);
+        }
+        else if (numerosr[2] == 10) {
+            ctx2.drawImage(n10, 1420, 180);
+        }
+    }
+    // Derivada Errada em A = 
+    // Primeiro Grau
+    if (grau == 1) {
+        if (numeroe[0] == 1) {
+            ctx2.drawImage(n1, 490, 180);
+        }
+        else if (numeroe[0] == 2) {
+            ctx2.drawImage(n2, 490, 180);
+        }
+        else if (numeroe[0] == 3) {
+            ctx2.drawImage(n3, 490, 180);
+        }
+        else if (numeroe[0] == 4) {
+            ctx2.drawImage(n4, 490, 180);
+        }
+        else if (numeroe[0] == 5) {
+            ctx2.drawImage(n5, 490, 180);
+        }
+    }
+    //Segundo Grau
+    else if (grau == 2) {
+        ctx2.drawImage(x, 510, 180);
+        if (numeroe[0] == 1) {
+            ctx2.drawImage(n1, 480, 180);
+        }
+        else if (numeroe[0] == 2) {
+            ctx2.drawImage(n2, 480, 180);
+        }
+        else if (numeroe[0] == 3) {
+            ctx2.drawImage(n3, 480, 180);
+        }
+        else if (numeroe[0] == 4) {
+            ctx2.drawImage(n4, 480, 180);
+        }
+        else if (numeroe[0] == 5) {
+            ctx2.drawImage(n5, 480, 180);
+        }
+        else if (numeroe[0] == 6) {
+            ctx2.drawImage(n6, 480, 180);
+        }
+        else if (numeroe[0] == 7) {
+            ctx2.drawImage(n7, 480, 180);
+        }
+        else if (numeroe[0] == 8) {
+            ctx2.drawImage(n8, 480, 180);
+        }
+        else if (numeroe[0] == 9) {
+            ctx2.drawImage(n9, 480, 180);
+        }
+        else if (numeroe[0] == 10) {
+            ctx2.drawImage(n10, 480, 180);
+        }
+        //Sinal
+        if (sinalr[0] == "+") {
+            ctx2.drawImage(sum, 545, 180);
+        }
+        else {
+            ctx2.drawImage(sub, 545, 180);
+        }
+        //Segundo coeficiente (x^0)
+        if (numeroe[1] == 1) {
+            ctx2.drawImage(n1, 590, 180);
+        }
+        else if (numeroe[1] == 2) {
+            ctx2.drawImage(n2, 590, 180);
+        }
+        else if (numeroe[1] == 3) {
+            ctx2.drawImage(n3, 590, 180);
+        }
+        else if (numeroe[1] == 4) {
+            ctx2.drawImage(n4, 590, 180);
+        }
+        else if (numeroe[1] == 5) {
+            ctx2.drawImage(n5, 590, 180);
+        }
+        else if (numeroe[1] == 6) {
+            ctx2.drawImage(n6, 590, 180);
+        }
+        else if (numeroe[1] == 7) {
+            ctx2.drawImage(n7, 590, 180);
+        }
+        else if (numeroe[1] == 8) {
+            ctx2.drawImage(n8, 590, 180);
+        }
+        else if (numeroe[1] == 9) {
+            ctx2.drawImage(n9, 590, 180);
+        }
+        else if (numeroe[1] == 10) {
+            ctx2.drawImage(n10, 590, 180);
+        }
+    }
+    // Terceiro Grau
+    else if (grau == 3) {
+        ctx2.drawImage(x, 510, 180);
+        ctx2.drawImage(n2, 535, 150);
+        if (numeroe[0] == 1) {
+            ctx2.drawImage(n1, 480, 180);
+        }
+        else if (numeroe[0] == 2) {
+            ctx2.drawImage(n2, 480, 180);
+        }
+        else if (numeroe[0] == 3) {
+            ctx2.drawImage(n3, 480, 180);
+        }
+        else if (numeroe[0] == 4) {
+            ctx2.drawImage(n4, 480, 180);
+        }
+        else if (numeroe[0] == 5) {
+            ctx2.drawImage(n5, 480, 180);
+        }
+        else if (numeroe[0] == 6) {
+            ctx2.drawImage(n6, 480, 180);
+        }
+        else if (numeroe[0] == 7) {
+            ctx2.drawImage(n7, 480, 180);
+        }
+        else if (numeroe[0] == 8) {
+            ctx2.drawImage(n8, 480, 180);
+        }
+        else if (numeroe[0] == 9) {
+            ctx2.drawImage(n9, 480, 180);
+        }
+        else if (numeroe[0] == 10) {
+            ctx2.drawImage(n10, 480, 180);
+        }
+        //Sinal
+        if (sinalr[0] == "+") {
+            ctx2.drawImage(sum, 570, 180);
+        }
+        else {
+            ctx2.drawImage(sub, 570, 180);
+        }
+        //Segundo coeficiente (x^1)
+        if (numeroe[1] == 1) {
+            ctx2.drawImage(n1, 610, 180);
+        }
+        else if (numeroe[1] == 2) {
+            ctx2.drawImage(n2, 610, 180);
+        }
+        else if (numeroe[1] == 3) {
+            ctx2.drawImage(n3, 610, 180);
+        }
+        else if (numeroe[1] == 4) {
+            ctx2.drawImage(n4, 610, 180);
+        }
+        else if (numeroe[1] == 5) {
+            ctx2.drawImage(n5, 610, 180);
+        }
+        else if (numeroe[1] == 6) {
+            ctx2.drawImage(n6, 610, 180);
+        }
+        else if (numeroe[1] == 7) {
+            ctx2.drawImage(n7, 610, 180);
+        }
+        else if (numeroe[1] == 8) {
+            ctx2.drawImage(n8, 610, 180);
+        }
+        else if (numeroe[1] == 9) {
+            ctx2.drawImage(n9, 610, 180);
+        }
+        else if (numeroe[1] == 10) {
+            ctx2.drawImage(n10, 610, 180);
+        }
+        ctx2.drawImage(x, 640, 180);
+        //Sinal 2
+        if (sinalr[1] == "+") {
+            ctx2.drawImage(sum, 680, 180);
+        }
+        else {
+            ctx2.drawImage(sub, 680, 180);
+        }
+        //Terceiro coeficiente (x^0)
+        if (numeroe[2] == 1) {
+            ctx2.drawImage(n1, 720, 180);
+        }
+        else if (numeroe[2] == 2) {
+            ctx2.drawImage(n2, 720, 180);
+        }
+        else if (numeroe[2] == 3) {
+            ctx2.drawImage(n3, 720, 180);
+        }
+        else if (numeroe[2] == 4) {
+            ctx2.drawImage(n4, 720, 180);
+        }
+        else if (numeroe[2] == 5) {
+            ctx2.drawImage(n5, 720, 180);
+        }
+        else if (numeroe[2] == 6) {
+            ctx2.drawImage(n6, 720, 180);
+        }
+        else if (numeroe[2] == 7) {
+            ctx2.drawImage(n7, 720, 180);
+        }
+        else if (numeroe[2] == 8) {
+            ctx2.drawImage(n8, 720, 180);
+        }
+        else if (numeroe[2] == 9) {
+            ctx2.drawImage(n9, 720, 180);
+        }
+        else if (numeroe[2] == 10) {
+            ctx2.drawImage(n10, 720, 180);
+        }
+    }
+}
+
+function limpatela() {
+    ctx2.clearRect(0, 0, 1890, 300);
+}
+
+function monitor() {
+    monitorOn();
+
+    projetajogo();
+
+    oqresolve();
+
+    criaerro();
+
+    imprimequest();
+
+    nivel++;
+
+    // Limpar variáveis:
+
+    numeros = [];
+    exp = [];
+    frac = [];
+    numerosr = [];
+    numeroe = [];
+    expr = [];
+    sinalr = [];
+    sinal = [];
+
 }

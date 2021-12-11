@@ -12,3 +12,10 @@ body{
     grid-template-columns: auto auto auto;
     padding: 10px 10px; 
   }
+
+.myCanvas2{
+    border:5px solid rgb(30, 255, 0);
+    z-index: 0;
+    background-color: white;
+    color: white;
+}

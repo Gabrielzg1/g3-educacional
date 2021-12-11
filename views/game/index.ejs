@@ -2,27 +2,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Jogo Educacional</title>
-    <link rel="stylesheet" href="game-static/style.css">
+    <link rel="stylesheet" href="game-static\style.css">
 </head>
-
-<body>
-    <!--Barra de navegacao com cronometro centralizado-->
-    <div class="nav-timer">
-        <a href="/">Home</a>
-        <div id="cron">00:00</div>
-
-    </div>
+<body onkeydown="OnKeyDown(event)" onkeyup="OnKeyUp(event)">
     <div class="Home-body">
         <div class="Ranking">
             <h1>Ranking</h1>
-            <h2>
-                <%= username %>
-            </h2>
+            <h2 id="Pontos"></h2>
         </div>
 
         <div class="Jogo">
             <div>
-            <canvas id="myCanvas2" class="myCanvas2" width="1890" height="300"></canvas>
+            <canvas id="myCanvas2" class="myCanvas2" width="1890" height="300" style="background-color: white;"></canvas>
             </div>
             <canvas id="myCanvas" class="myCanvas" width="1890" height="930"></canvas>
             <img id="cenario" width="0" height="0" src="game-static\cenario-v2.png">
@@ -34,7 +25,7 @@
             <img id="back" width="0" height="0" src="game-static\back.png">
             <img id="placaa" width="0" height="0" src="game-static\PLACAa.png">
             <img id="placab" width="0" height="0" src="game-static\placaB.png">
-            <img id="n1" width="0" height="0" src="game-static\0.png">
+            <img id="n1" width="0" height="0" src="game-static\1.png">
             <img id="n2" width="0" height="0" src="game-static\2.png">
             <img id="n3" width="0" height="0" src="game-static\3.png">
             <img id="n4" width="0" height="0" src="game-static\4.png">
@@ -51,23 +42,13 @@
             <img id="fra" width="0" height="0" src="game-static\frac.png">
             <img id="sum" width="0" height="0" src="game-static\soma.png">
             <img id="sub" width="0" height="0" src="game-static\sub.png">
-            <script type="text/javascript" src="main.js"></script>
+            <script type="text/javascript" src="game-static\main.js"></script>
         </div>
         <div class="Pontuacao">
             <h1>Tabela de Pontos</h1>
         </div>
     </div>
-    <div class="buttons">
-        <button onclick="iniciar(); //start(); // função de iniciar o jogo e timer">Start</button>
-        <button onclick="parar();">Stop</button>
-    </div>
-    <script type="text/javascript" src="game-static/main.js"></script>
-    <script type="text/javascript" src="game-static/validacao.js"></script>
-    <script type="text/javascript" src="game-static/cronometro.js"></script>
 
-    <script>
-
-
-    </script>
 
 </body>
+</body> 

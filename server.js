@@ -40,7 +40,6 @@ app.get('/game', function (req, res) {
         //res.redirect('/login') //COMANDO DESATIVADO PARA DESENVOLVIMENTO ( definitiva )
     }
 
-
 });
 
 app.get('/sobre', function (req, res) {
@@ -54,7 +53,6 @@ app.get('/', function (req, res) {
 });
 
 //configuração do jogo
-
 
 app.listen(port, function () {
     console.log(`Rodando em: http://${host}:${port}/`);

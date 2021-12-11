@@ -1,0 +1,15 @@
+body{
+    display: block;
+   background-color: white;
+}
+.myCanvas{
+    border:5px solid rgb(30, 255, 0);
+    background-color: black;
+    z-index: 0;
+}
+
+.Home-body{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px 10px; 
+  }

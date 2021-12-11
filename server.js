@@ -31,13 +31,13 @@ app.get('/login', function (req, res) {
 
 });
 app.get('/game', function (req, res) {
-    var username = "Nome do usuário" // linha de código para desenvolvimento ( Temporário )
-    res.render('./game/index', { username: username })     // linha de código para desenvolvimento ( Temporário )
+    //var username = "Nome do usuário" // linha de código para desenvolvimento ( Temporário )
+    // res.render('./game/index', { username: username })     // linha de código para desenvolvimento ( Temporário )
     if (req.query.userid && req.query.userid != undefined && req.session.userid) {
-        //var username = req.query.userid
-        //res.render('./game/index', { username: username }) //COMANDO DESATIVADO PARA DESENVOLVIMENTO ( definitiva )
+        var username = req.query.userid
+        res.render('./game/index', { username: username }) //COMANDO DESATIVADO PARA DESENVOLVIMENTO ( definitiva )
     } else {
-        //res.redirect('/login') //COMANDO DESATIVADO PARA DESENVOLVIMENTO ( definitiva )
+        res.redirect('/login') //COMANDO DESATIVADO PARA DESENVOLVIMENTO ( definitiva )
     }
 
 });

@@ -59,7 +59,7 @@ var g = true;
 monitor();
 
 function monitor() {
-    
+
     monitorOn();
 
     projetajogo();
@@ -145,8 +145,6 @@ function comparar() {
 }
 
 document.addEventListener('keydown', function (e) {
-
-
     //left
     if (e.keyCode == 37) {
         xm = 465;

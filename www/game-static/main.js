@@ -110,7 +110,7 @@ function background() {
 }
 
 function gameover() {
-    alert("Acabou!");
+    alert("GameOver! Pontuação: " + pontos);
 }
 
 function monitorOn() {

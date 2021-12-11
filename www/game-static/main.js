@@ -58,6 +58,33 @@ var g = true;
 
 monitor();
 
+function monitor() {
+    
+    monitorOn();
+
+    projetajogo();
+
+    oqresolve();
+
+    criaerro();
+
+    imprimequest();
+
+    nivel++;
+
+    // Limpar variáveis:
+
+    numeros = [];
+    exp = [];
+    frac = [];
+    numerosr = [];
+    numeroe = [];
+    expr = [];
+    sinalr = [];
+    sinal = [];
+
+}
+
 function Atualizar() {
     background();
     jogar();
@@ -115,7 +142,6 @@ function comparar() {
             }
         }
     }
-    console.log(pontos);
 }
 
 document.addEventListener('keydown', function (e) {
@@ -2852,30 +2878,4 @@ function derivada_certaemB() {
 
 function limpatela() {
     ctx2.clearRect(0, 0, 1890, 300);
-}
-
-function monitor() {
-    monitorOn();
-
-    projetajogo();
-
-    oqresolve();
-
-    criaerro();
-
-    imprimequest();
-
-    nivel++;
-
-    // Limpar variáveis:
-
-    numeros = [];
-    exp = [];
-    frac = [];
-    numerosr = [];
-    numeroe = [];
-    expr = [];
-    sinalr = [];
-    sinal = [];
-
 }

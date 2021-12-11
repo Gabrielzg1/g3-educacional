@@ -55,11 +55,10 @@ var esquerda = true, direita = false;
 var count = true;
 var g = true;
 
-
 monitor();
 
 function monitor() {
-
+    
     monitorOn();
 
     projetajogo();
@@ -89,9 +88,6 @@ function Atualizar() {
     background();
     jogar();
     comparar();
-    if (nivel == 20) {
-        gameover();
-    }
 }
 
 setInterval(Atualizar, 1);
@@ -131,6 +127,9 @@ function comparar() {
                 monitor();
                 g = false;
             }
+            else if(xm == 1235 && Math.abs((450) - yback) < 20){
+                gameover();
+            }
         }
         else {
             if (xm == 1235 && Math.abs((450) - yback) < 20) {
@@ -140,11 +139,16 @@ function comparar() {
                 monitor();
                 g = false;
             }
+            else if(xm == 465 && Math.abs((450) - yback) < 20){
+                gameover();
+            }
         }
     }
 }
 
 document.addEventListener('keydown', function (e) {
+
+
     //left
     if (e.keyCode == 37) {
         xm = 465;
